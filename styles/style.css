@@ -12,13 +12,8 @@ font-family: 'Open Sans', sans-serif;
 
 }
 
-
-@media all and (min-width: 1100px) {
-  .navbar-fixed-width {
-    width: 1000px;
-    margin-left: auto;
-    margin-right:auto
-  }
+.navbar-brand {
+    padding-right: 50px;
 }
 
 
@@ -34,4 +29,48 @@ font-family: 'Open Sans', sans-serif;
 #my-navbar.navbar-default .navbar-nav>li {
 
 	margin-right: 20px;
+}
+
+.img-logo {
+
+    width:200px;
+}
+
+.test {
+    width: 1000px;
+    background-color: yellow;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+.col-sm-1 {
+
+    border: 2px solid black;
+}
+.col-xs-1 {
+
+    border: 2px solid black;
+}
+.col-md-1 {
+
+    border: 2px solid black;
+}
+.col-lq-1 {
+
+    border: 2px solid black;
+}
+
+
+
+
+
+
+
+@media all and (min-width: 1100px) {
+  .navbar-fixed-width {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: yellow;
+  }
 }

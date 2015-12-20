@@ -16,31 +16,85 @@
 <body>
 	<!-- <div class="navbar-outer"> -->
 	<nav class="navbar navbar-default navbar-fixed-top navbar-fixed-width" id="my-navbar" role="navigation">
-  		<div class="container">
-  			<div class="navbar-header">
-  				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-  					<a href="#" class="btn btn-info btn-md">
-          <span class="glyphicon glyphicon-tasks"></span>
-        </a>
-  				</button>
-  			</div>
-  			<div class="collapse navbar-collapse" id="navbar-collapse">
-  				<ul class="nav navbar-nav">
-  					<li><a href="#domov">Domov</a> 
-  					<li><a href="#ponuka">Ponuka</a> 
-  					<li><a href="#mojucet">Moj ucet</a> 
-  					<li><a href="#signin">Prihlas sa</a> 
-  					<li><a href="#contact">Kontakt</a> 
-  				</ul>
-  			</div>
-  		</div>
-  	</nav>
-  <!-- </div> -->
-	
+    <div class="container">
+     <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+        <a href="#" class="btn btn-warning btn-md">
+        <span class="glyphicon glyphicon-tasks"></span>
+      </a>
+    </button>
+    <a class="navbar-brand" href="#">TECHstore</a>
+  </div>
+  <div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="nav navbar-nav">
+     <li><a href="#domov">Domov</a> 
+       <li><a href="#ponuka">Ponuka</a> 
+         <li><a href="#mojucet">Moj ucet</a> 
+           <li><a href="#signin">Prihlas sa</a> 
+             <li><a href="#contact">Kontakt</a> 
+             </ul>
+           </div>
+         </div>
+       </nav>
 
-	<script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-</body>
+       <div class="jumbotron">
+        <div class="container text-left">
+          <div class="row">
+            <div class="col-lq-6">
 
-</html>
+              <img src="img/logo.svg" class="img-logo">
+              <h1>TECHstore</h1>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="containter navbar-fixed-width">
+        <div class="row">
+          
+          <div class="col-xs-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+          <div class="col-sm-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+          <div class="col-md-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+          <div class="col-lq-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+          <div class="col-xs-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+          <div class="col-xs-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+          <div class="col-xs-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+          <div class="col-xs-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+          <div class="col-xs-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+          <div class="col-xs-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+          <div class="col-xs-1">
+            <p>LOREM IPSUM DOLOR...</p>
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+
+
+      <script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    </body>
+
+    </html>
