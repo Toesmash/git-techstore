@@ -1,0 +1,37 @@
+/*.navbar {
+    position: fixed !important;
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+background-color: lightgrey;
+font-family: 'Open Sans', sans-serif;
+
+}
+
+
+@media all and (min-width: 1100px) {
+  .navbar-fixed-width {
+    width: 1000px;
+    margin-left: auto;
+    margin-right:auto
+  }
+}
+
+
+#my-navbar.navbar-default {
+    font-size: 14px;
+    border-bottom-width: 1px;
+}
+#my-navbar.navbar-default .navbar-nav>li>a:hover,
+#my-navbar.navbar-default .navbar-nav>li>a:focus {
+    color: white;
+    background-color: rgba(16, 138, 209, 1);
+}
+#my-navbar.navbar-default .navbar-nav>li {
+
+	margin-right: 20px;
+}
