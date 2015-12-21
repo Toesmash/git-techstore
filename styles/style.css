@@ -9,11 +9,35 @@
 body{
 background-color: lightgrey;
 font-family: 'Open Sans', sans-serif;
+padding-top: 52px;
+}
+
+nav {
+    padding-top: 4px;
+    max-width: 1000px;
+    margin: 0 auto;
+    /*background-color: blue;*/
+}
+
+.navbar-header {
+    /*width: 100%;*/
+    /*background-color: yellow;*/
+    /*border: 1px solid blue;*/
+    width: 100px;
+}
+
+.container-fluid {
+    margin: 0 auto;
+    max-width: 1000px;
+    /*background-color: lightblue;*/
+    /*border: 3px dashed black;*/
 
 }
 
 .navbar-brand {
-    padding-right: 50px;
+    margin-right: 50px;
+    margin-top: -2px;
+    /*background-color: yellow;*/
 }
 
 
@@ -28,42 +52,37 @@ font-family: 'Open Sans', sans-serif;
 }
 #my-navbar.navbar-default .navbar-nav>li {
 
-	margin-right: 20px;
+	margin-left: 20px;
+    /*border: 1px solid black;*/
 }
 
 .img-logo {
 
-    width:200px;
+    width:100px;
 }
 
-.test {
-    width: 1000px;
-    background-color: yellow;
-    margin-right: auto;
-    margin-left: auto;
-
+.col-md-%{
+    border: 1px solid black;
 }
-.col-sm-1 {
 
-    border: 2px solid black;
+.row {
+
+    background-color: lightblue;
 }
-.col-xs-1 {
 
-    border: 2px solid black;
+#nav-logo {
+
+    width:100px;
 }
-.col-md-1 {
 
-    border: 2px solid black;
-}
-.col-lq-1 {
+.jumbotron {
+    margin-top: 5px;
+    border: 2px dotted black;
 
-    border: 2px solid black;
 }
 
 
-
-
-
+/*
 
 
 @media all and (min-width: 1100px) {
@@ -73,4 +92,4 @@ font-family: 'Open Sans', sans-serif;
     margin-right: auto;
     background-color: yellow;
   }
-}
+}*/
