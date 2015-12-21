@@ -7,7 +7,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 body{
-background-color: lightgrey;
+/*background-color: lightgrey;*/
 font-family: 'Open Sans', sans-serif;
 padding-top: 52px;
 }
@@ -58,16 +58,28 @@ nav {
 
 .img-logo {
 
-    width:100px;
+    height:80px;
 }
 
-.col-md-%{
+.img-main{
+    margin-top: 10px;
+    text-align: middle;
+}
+
+.col-md-4{
+    /*border: 1px solid black;*/
+}
+.col-xs-1{
     border: 1px solid black;
+}
+
+#jumbos {
+    height: 80px;
 }
 
 .row {
 
-    background-color: lightblue;
+    /*background-color: lightblue;*/
 }
 
 #nav-logo {
@@ -76,8 +88,10 @@ nav {
 }
 
 .jumbotron {
-    margin-top: 5px;
-    border: 2px dotted black;
+    margin: 0;
+    border-radius: 0;
+    width:100%;
+    /*border: 2px dotted black;*/
 
 }
 
