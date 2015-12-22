@@ -55,13 +55,13 @@
           </ol>
 
           <div class="carousel-inner">
-            <div class="item active">
+            <div class="item active cared">
               <img src="img/carousel/apple-products.jpg" alt="Apple products" class="img-responsive">
             </div>
-            <div class="item">
+            <div class="item cared">
               <img src="img/carousel/watch.jpg" alt="Apple watch" class="img-responsive">
             </div>
-            <div class="item">
+            <div class="item cared">
               <img src="img/carousel/headphones.jpg" alt="Headphones" class="img-responsive">
             </div>
             <a href="#my-carousel" class="carousel-control left" data-slide="prev">

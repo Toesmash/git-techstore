@@ -7,7 +7,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 body{
-/*background-color: lightgrey;*/
+background-color: lightgrey;
 font-family: 'Open Sans', sans-serif;
 padding-top: 52px;
 }
@@ -17,6 +17,13 @@ nav {
     max-width: 1000px;
     margin: 0 auto;
     /*background-color: blue;*/
+}
+
+
+.cared {
+    width: auto;
+    /*height: 350px;*/
+    max-height: 350px;
 }
 
 .navbar-header {
@@ -59,6 +66,11 @@ nav {
 .img-logo {
 
     height:80px;
+}
+
+.col-md-8 {
+
+    background-color: yellow;
 }
 
 .img-main{
