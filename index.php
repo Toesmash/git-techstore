@@ -85,19 +85,19 @@
 
           <div class="carousel-inner">
             <div class="item active cared">
-              <img src="img/carousel/apple-products.jpg" alt="Apple products" class="img-responsive">
+              <img src="img/carousel/ipad.jpg" alt="iPad tablet with mac keyboard" class="img-responsive">
+            </div>
+            <div class="item cared">
+              <img src="img/carousel/macbook.jpg" alt="Macbook laptop by Apple" class="img-responsive">
+            </div>
+            <div class="item cared">
+              <img src="img/carousel/philips.jpg" alt="Headphones by Philips" class="img-responsive">
             </div>
             <div class="item cared">
               <img src="img/carousel/watch.jpg" alt="Apple watch" class="img-responsive">
             </div>
             <div class="item cared">
-              <img src="img/carousel/headphones.jpg" alt="Headphones" class="img-responsive">
-            </div>
-            <div class="item cared">
-              <img src="img/carousel/headphones-2.jpg" alt="Headphones" class="img-responsive">
-            </div>
-            <div class="item cared">
-              <img src="img/carousel/watch-2.jpg" alt="Watch" class="img-responsive">
+              <img src="img/carousel/razer.jpg" alt="Gaming headphones razer" class="img-responsive">
             </div>
             <a href="#my-carousel" class="carousel-control left" data-slide="prev">
               <span class="icon-prev"></span>
