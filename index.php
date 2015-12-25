@@ -39,7 +39,7 @@
 
     <!-- CAROUSEL -->
     <div class="row">
-      <div  class="col-md- nopadding">
+      <div  class="col-md-12 nopadding">
         <div class="carousel slide" id="my-carousel">
 
           <ol class="carousel-indicators">

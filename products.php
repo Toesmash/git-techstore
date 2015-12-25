@@ -17,16 +17,23 @@
 <div class="container-fluid">
 	<!-- NAVBAR -->
 	<?php include ("navbar.php"); ?>
-	<!-- END OF NAVBAR -->
-	<div class="row">
-	<div class="col-md-3 nopadding">
-		<div class="list-group">
+	<header>
+		<div class="jumbotron">
+	        <h1>Bootstrap Affix</h1>
+	    </div>
+    </header>
+
+
+
+<div class="row">
+	<div class="col-md-3">
+	<div class="list-group" id="sidebar">
 	  			<div class="list-group-item">
 	      			<h3 class="list-group-item-heading">Categories</h3>
 	    		</div>
 
 	    		<div class="list-group-item list-group-item-color">
-	        			<a data-toggle="collapse" href="#collapse1">ITEM #1</a>
+	        			<a data-toggle="collapse" data-target="#collapse1">ITEM #1</a>
 
 	      			<span class="glyphicon glyphicon-search"></span>
 	    		</div>
@@ -40,7 +47,7 @@
 
 	    		<div class="list-group-item list-group-item-color">
 	      
-	        			<a data-toggle="collapse" href="#collapse2">ITEM #2</a>
+	        			<a data-toggle="collapse" data-target="#collapse2">ITEM #2</a>
 	      			
 	    		</div>
 	    		<div id="collapse2" class="panel-collapse collapse">
@@ -54,7 +61,7 @@
 
 	    		<div class="list-group-item list-group-item-color">
 	      
-	        			<a data-toggle="collapse" href="#collapse3">ITEM #2</a>
+	        			<a data-toggle="collapse" data-target="#collapse3">ITEM #2</a>
 	      			
 	    		</div>
 	    		<div id="collapse3" class="panel-collapse collapse">
@@ -70,19 +77,55 @@
 	</div>
 
 
-	<div class="col-md-9 nopadding">
-		<div class="col-md-3">
-			<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+	<div class="col-md-9">
+		<div class="row">
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
 		</div>
-		<div class="col-md-3">
-			<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+
+
+		<div class="row">
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
 		</div>
-		<div class="col-md-3">
-			<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+
+
+		<div class="row">
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
+			<div class="col-md-3">
+				<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+			</div>
 		</div>
-		<div class="col-md-3">
-			<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
-		</div>
+
+
 	</div>
 	</div>
 
@@ -92,10 +135,68 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+	<script type="text/javascript">
+		$('#sidebar').affix({
+	      offset: {
+	        top: $('header').height()
+	      }
+		});	
+
+
+	</script>
 
 </body>
 </html>
 
+<!-- 
+		<div class="list-group list-group-all">
+	  			<div class="list-group-item">
+	      			<h3 class="list-group-item-heading">Categories</h3>
+	    		</div>
+
+	    		<div class="list-group-item list-group-item-color">
+	        			<a data-toggle="collapse" data-target="#collapse1">ITEM #1</a>
+
+	      			<span class="glyphicon glyphicon-search"></span>
+	    		</div>
+	    		<div id="collapse1" class="panel-collapse collapse">
+	      			<ul class="list-group">
+				        <li class="list-group-item">One</li>
+				        <li class="list-group-item">Two</li>
+				        <li class="list-group-item">Three</li>
+	      			</ul>
+	    		</div>
+
+	    		<div class="list-group-item list-group-item-color">
+	      
+	        			<a data-toggle="collapse" data-target="#collapse2">ITEM #2</a>
+	      			
+	    		</div>
+	    		<div id="collapse2" class="panel-collapse collapse">
+	      			<ul class="list-group">
+				        <li class="list-group-item">One</li>
+				        <li class="list-group-item">Two</li>
+				        <li class="list-group-item">Three</li>
+	      			</ul>
+	    		</div>
+
+
+	    		<div class="list-group-item list-group-item-color">
+	      
+	        			<a data-toggle="collapse" data-target="#collapse3">ITEM #2</a>
+	      			
+	    		</div>
+	    		<div id="collapse3" class="panel-collapse collapse">
+	      			<ul class="list-group">
+				        <li class="list-group-item">One</li>
+				        <li class="list-group-item">Two</li>
+				        <li class="list-group-item">Three</li>
+	      			</ul>
+	    		</div>
+
+	    		
+		</div>
+ -->
 
 
 
