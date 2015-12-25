@@ -25,6 +25,7 @@ nav {
     margin: 0 auto;
     max-width: 1000px;
     /*background-color: lightblue;*/
+    /*border: 1px dashed navy;*/
 
 }
 
@@ -111,8 +112,8 @@ padding-top: 20px;
 
 .cared {
     width: auto;
-    /*height: 350px;*/
-    max-height: 350px;
+    /*height: 400px;*/
+    height: 300px;
 }
 
 
@@ -125,17 +126,37 @@ padding-top: 20px;
     background-color: #108ad1;
 }
 
-
-
-
-/*--------------------------------------------COLUMNS*/
-/*
-.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,  .col-md-7,  .col-md-8,  .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
-border: 1px solid darkgrey;
-
+.carousel-caption {
+    top: 50%;
+    transform: translateX(50%);
 }
 
-*/
+
+/*--------------------------------------------CATEGORIES*/
+.img-category {
+    max-height: 150px;
+    /*border: 1px solid yellow;*/
+}
+
+.panel-group {
+
+    /*margin-left: -20px;*/
+}
+
+.list-group-item-color {
+
+    background-color: lightblue;
+}
+
+/*--------------------------------------------COLUMNS*/
+
+/*.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,  .col-md-7,  
+.col-md-8,  .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+border: 1px solid darkgrey;
+
+}*/
+
+
 
 
 

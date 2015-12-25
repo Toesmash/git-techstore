@@ -15,22 +15,7 @@
 </head>
 <body>
   <div class="container-fluid">
-
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-default navbar-fixed-top " id="my-navbar" role="navigation">
-      <div class="collapse navbar-collapse" id="navbar-collapse navbar-header">
-        <div class="navbar-header">
-          <a href="#domov"><img src="img/logo-primary2.svg" class="navbar-brand"></a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li><a href="#ponuka">Ponuka</a> 
-          <li><a href="#mojucet">Moj ucet</a> 
-          <li><a href="#signin">Prihlas sa</a> 
-          <li><a href="#contact">Kontakt</a> 
-        </ul>
-      </div>
-    </nav>
-
+  <?php include ("navbar.php"); ?>
 
     <!-- HEADER  -->
     <div class="row" id="header">
@@ -49,26 +34,8 @@
             </span>
           </div>
         </form>
-      </div>
-           
+      </div>    
     </div>
-
-
-
-
-<!-- 
-<div class="col-md-6 pull-right">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control input-md" placeholder="Vyhladaj produkt" name="q">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-md" type="submit"><i class="glyphicon glyphicon-search">HLADAJ</i></button>
-                    </div>
-                </div>
-            </form>
-      </div>  -->
-
-
 
     <!-- CAROUSEL -->
     <div class="row">
@@ -86,18 +53,38 @@
           <div class="carousel-inner">
             <div class="item active cared">
               <img src="img/carousel/ipad.jpg" alt="iPad tablet with mac keyboard" class="img-responsive">
+              <div class="carousel-caption caption-right">
+                <h1>iPad</h1>
+                <p>Lorem Ipsum</p>
+              </div>
             </div>
             <div class="item cared">
               <img src="img/carousel/macbook.jpg" alt="Macbook laptop by Apple" class="img-responsive">
+              <div class="carousel-caption">
+                <h1>Macbook</h1>
+                <p>Lorem Ipsum</p>
+              </div>
             </div>
             <div class="item cared">
               <img src="img/carousel/philips.jpg" alt="Headphones by Philips" class="img-responsive">
+              <div class="carousel-caption">
+                <h1>Philips</h1>
+                <p>Lorem Ipsum</p>
+              </div>
             </div>
             <div class="item cared">
               <img src="img/carousel/watch.jpg" alt="Apple watch" class="img-responsive">
+              <div class="carousel-caption">
+                <h1>Apple watch</h1>
+                <p>Lorem Ipsum</p>
+              </div>
             </div>
             <div class="item cared">
               <img src="img/carousel/razer.jpg" alt="Gaming headphones razer" class="img-responsive">
+              <div class="carousel-caption">
+                <h1>Razer</h1>
+                <p>Lorem Ipsum</p>
+              </div>
             </div>
             <a href="#my-carousel" class="carousel-control left" data-slide="prev">
               <span class="icon-prev"></span>
@@ -109,6 +96,19 @@
         </div>   
       </div>
     </div>
+    <!-- INFO -->
+    <div class="row">
+      <div class="col-md-12">
+        <h1>It Does More. It Costs Less. It’s that Simple.</h1>
+      </div>
+    </div>
+
+
+
+
+
+
+
     <div class="row">
       <div class="col-md-6">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae eros sit amet lacus finibus lacinia non consectetur lectus. In hac habitasse platea dictumst. Ut posuere laoreet malesuada. Pellentesque varius, urna ut lobortis imperdiet, sem massa placerat leo, vel finibus mi mauris vel velit. In porttitor tellus imperdiet dolor pharetra iaculis. Donec auctor eu lorem at viverra. Vestibulum eget purus neque. Donec rutrum iaculis lectus et auctor. Vestibulum quis risus euismod, vestibulum magna quis, tristique justo. Sed quis ligula blandit, scelerisque dui sit amet, hendrerit quam. Nam dignissim dapibus eros non dignissim. Interdum et malesuada fames ac ante ipsum primis in faucibus.
