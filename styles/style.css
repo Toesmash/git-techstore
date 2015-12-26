@@ -1,9 +1,3 @@
-/*.navbar {
-    position: fixed !important;
-    width: 1000px;
-    margin-right: auto;
-    margin-left: auto;
-}*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 /*--------------------------------------------STRUKTURA*/
@@ -133,25 +127,16 @@ padding-top: 20px;
 
 
 /*--------------------------------------------CATEGORIES*/
-.img-category {
-    max-height: 150px;
-    /*border: 1px solid yellow;*/
-}
-/*
-header {
-    height:250px;
-}*/
 
 @media (min-width: 979px) {
   #sidebar.affix-top {
     position: static;
-    /*margin-top:25px;*/
     width:228px;
   }
   
   #sidebar.affix {
     position: fixed;
-    top: 80px;
+    top: 85px;
     width:228px;
   }
 }
@@ -164,19 +149,10 @@ header {
 
 
 /*--------------------------------------------COLUMNS*/
-
+/*
 .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,  .col-md-7,  
 .col-md-8,  .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
-border: 1px solid darkgrey;
-
+    border: 1px solid darkgrey;
 }
-
-
-
-
-
-/*--------------------------------------------QUERIES*/
-
-
-
+*/
 
