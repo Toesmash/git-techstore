@@ -46,7 +46,6 @@
 					$rows = getCategoryRows();
 					getCategory($rows);
 
-
  				?>
 <!-- 
 	    		    <li class="list-group-item"><a data-toggle="collapse" data-target="#collapse1">ITEM #1</a></li>
@@ -79,8 +78,8 @@
 		      				</ul>
 	    				</div>
 
-
-	    		</ul> -->
+-->
+	    		</ul> 
 
 
 
