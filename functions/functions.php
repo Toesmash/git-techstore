@@ -83,24 +83,17 @@ function insert(){
 		$pro_image_tmp = $_FILES['pro_image']['tmp_name'];
 
 		move_uploaded_file($pro_image_tmp, 'product_images/'.$pro_image.'');
-
-		// $insert_product = "INSERT into products (pro_cat, pro_brand, pro_name, pro_price, pro_desc, pro_image, pro_keywords) VALUES('$pro_cat','$pro_brand','$pro_name','$pro_price','$pro_desc','$pro_image','$pro_keywords')";
-
-		// $insert = mysqli_query($con, $insert_product);
-
-		// if ($insert){
-		// 	echo "<script>alert('DONE')</script>";
-		// }
-
-
 		$sql = "INSERT into products (pro_category, pro_brand, pro_name, pro_price, pro_desc, pro_image, pro_keywords) 
 		VALUES('$pro_cat','$pro_brand','$pro_name','$pro_price','$pro_desc','$pro_image','$pro_keywords')";
 
 
 		if ($con->query($sql) === TRUE) {
-		    echo "New record created successfully";
+		    echo 	'<div class="alert alert-success">
+    					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   						<strong>Super!</strong> Bol pridany novy produkt.
+  					</div>';
 		} else {
-		    echo "Error: " . $sql . "<br>" . $con->error;
+		    echo "Chyba: " . $sql . "<br>" . $con->error;
 		}
 
 }
