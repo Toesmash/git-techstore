@@ -7,3 +7,10 @@ form {
 
 	/*background-color: yellow;*/
 }
+
+p {
+
+	font-size: 5px;
+	background-color: yellow;
+	font-weight: bold;
+}

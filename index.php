@@ -164,7 +164,7 @@
 
   <div class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container">
-      <a href="insert.php" type="button" class="btn btn-warning navbar-btn">
+      <a href="admin/insert.php" type="button" class="btn btn-warning navbar-btn">
         <span class="glyphicon glyphicon-plus"></span> 
         <p>INSERT</p>
       </a>
