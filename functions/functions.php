@@ -69,6 +69,76 @@ function getSubCategory($collapse_n){
 }
 
 
+
+
+function getProducts(){
+		global $con;
+
+		$x = 0;
+		$sql = "SELECT * FROM products";
+		$run_pro = mysqli_query($con, $sql);
+
+		while ($row_products = mysqli_fetch_array($run_pro)) {
+			$product_id = $row_products['pro_id'];
+			$product_category = $row_products['pro_category'];
+			$product_name = $row_products['pro_name'];
+			$product_price = $row_products['pro_price'];
+			$product_image = $row_products['pro_image'];
+			$product_desc = $row_products['pro_desc'];
+
+
+			echo '
+				<div class="col-md-4 single_product" >
+					<div class="product_title" data-toggle="modal" data-target="#modalnr_'.$x.'">
+					<h4>'.$product_name.'</h4>
+					</div>
+					<div class="product_image">
+					<img src="admin/product_images/'.$product_image.'"/>
+					</div>
+					<div class="product_price">
+					<p>'.$product_price.'€</p>
+					</div>
+
+				</div>
+
+				<div id="modalnr_'.$x.'" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+        						<button type="button" class="close" data-dismiss="modal">&times;</button>
+        						<h4 class="modal-title">'.$product_name.'</h4>
+      						</div>
+      						<div class="modal-body">
+       	 						<div>
+       	 							<p>'.$product_desc.'</p>
+       	 						</div>
+      						</div>
+      						<div class="modal-footer">
+        						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      						</div>
+
+
+						</div>
+
+
+
+					</div>				
+				</div>
+
+
+
+			';
+			$x++;
+
+		}
+
+
+
+
+
+}
+
+
 function insert(){
 		global $con;
 
@@ -97,6 +167,9 @@ function insert(){
 		}
 
 }
+
+
+
 
 
 ?>
