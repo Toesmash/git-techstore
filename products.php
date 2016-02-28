@@ -68,8 +68,6 @@
 	        top: $('header').height()
 	      }
 		});	
-
-
 	</script>
 
 </body>

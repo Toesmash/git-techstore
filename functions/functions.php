@@ -44,8 +44,10 @@ function getCategory($n_rows){
 	for ($x=0 ; $x<$n_rows; $x++){
 
 		$row_cat = mysqli_fetch_array($run_cat);
+		$cat_id = $row_cat['cat_id'];
 		$cat_name = $row_cat['cat_name'];
-		echo '<li class="list-group-item"><a data-toggle="collapse" data-target="#collapse'.$x.'">'.$cat_name.'</a></li>';
+
+		echo '<li class="list-group-item"><a href="products.php?category='.$cat_id.'"data-toggle="collapse" data-target="#collapse'.$x.'">'.$cat_name.'</a></li>';
 		getSubCategory($x);
 		
 
@@ -72,10 +74,27 @@ function getSubCategory($collapse_n){
 
 
 function getProducts(){
+
+
+	if(!isset($_GET['category'])){
+		echo "
+
+		<h1>Nooo asi sa tu nic nepredava (KLIKNI NA KATEGORIU :)</h1>
+		";
+
+
+		
+
+	}
+	else {
+
 		global $con;
+		$cat_id = $_GET['category'];
 
 		$x = 0;
-		$sql = "SELECT * FROM products";
+		$sql = "SELECT * FROM products WHERE pro_category like $cat_id";
+
+
 		$run_pro = mysqli_query($con, $sql);
 
 		while ($row_products = mysqli_fetch_array($run_pro)) {
@@ -89,15 +108,17 @@ function getProducts(){
 
 			echo '
 				<div class="col-md-4 single_product" >
-					<div class="product_title" data-toggle="modal" data-target="#modalnr_'.$x.'">
-					<h4>'.$product_name.'</h4>
+					<div class="product_title">
+					<p>'.$product_name.'</p>
 					</div>
-					<div class="product_image">
+					<div class="product_image"  data-toggle="modal" data-target="#modalnr_'.$x.'">
 					<img src="admin/product_images/'.$product_image.'"/>
 					</div>
 					<div class="product_price">
 					<p>'.$product_price.'€</p>
 					</div>
+					<button class="btn btn-primary btn-sm">Pridaj do kosika</button>
+					
 
 				</div>
 
@@ -109,25 +130,32 @@ function getProducts(){
         						<h4 class="modal-title">'.$product_name.'</h4>
       						</div>
       						<div class="modal-body">
-       	 						<div>
+       	 						<div class="description">
        	 							<p>'.$product_desc.'</p>
+       	 							<img src="admin/product_images/'.$product_image.'"/>
        	 						</div>
+       	 						<div class="col-md-8">
+       	 							<h2>Cena s DPH:</h2>
+       	 						</div>
+       	 						<div class="col-md-4">
+       	 							<h2>'.$product_price.' €</h2>
+       	 						</div>
+       	 						<div class="col-md-8">
+       	 							<p>Cena bez DPH:</p>
+       	 						</div>
+       	 						<div class="col-md-4">
+       	 							<p>'.calculateDPH($product_price, 20).' €</p>
+       	 						</div>
+
       						</div>
       						<div class="modal-footer">
         						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       						</div>
-
-
 						</div>
-
-
-
 					</div>				
 				</div>
-
-
-
 			';
+
 			$x++;
 
 		}
@@ -136,8 +164,24 @@ function getProducts(){
 
 
 
+
+	}
+
+
+
+
 }
 
+
+
+
+
+
+
+
+function calculateDPH($price, $tax){
+	return round($price / ($tax/100+1),2);
+}
 
 function insert(){
 		global $con;
