@@ -46,12 +46,18 @@ function getCategory($n_rows){
 		$row_cat = mysqli_fetch_array($run_cat);
 		$cat_id = $row_cat['cat_id'];
 		$cat_name = $row_cat['cat_name'];
-
-		echo '<li class="list-group-item"><a href="products.php?category='.$cat_id.'"data-toggle="collapse" data-target="#collapse'.$x.'">'.$cat_name.'</a></li>';
+		echo '
+				<a href="#collapse'.$x.'" class="list-group-item list-group-item-info" data-toggle="collapse" 
+				data-parent="#affix_sidebar">'.$cat_name.'</a>';
 		getSubCategory($x);
+
+		
 		
 
 	}
+
+
+	
 }
 
 
@@ -62,11 +68,14 @@ function getSubCategory($collapse_n){
 	$run_cat = mysqli_query($con, $sql);
 	$n_unique=3;
 
-	echo '<div id="collapse'.$collapse_n.'" class="panel-collapse collapse"><ul class="list-group">';
+	echo '<div class="collapse" id="collapse'.$collapse_n.'">';
 	for ($x=0; $x<$n_unique; $x++){
 		echo '<li class="list-group-item">ITEM #'.$x.'</li>';
 	}
-	echo '</ul></div>';
+	echo '</div>';
+
+
+
 
 }
 
@@ -81,9 +90,6 @@ function getProducts(){
 
 		<h1>Nooo asi sa tu nic nepredava (KLIKNI NA KATEGORIU :)</h1>
 		";
-
-
-		
 
 	}
 	else {
@@ -155,21 +161,9 @@ function getProducts(){
 					</div>				
 				</div>
 			';
-
 			$x++;
-
 		}
-
-
-
-
-
-
 	}
-
-
-
-
 }
 
 

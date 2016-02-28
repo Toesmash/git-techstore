@@ -33,7 +33,7 @@
 
 <div class="row">
 	<div class="col-md-3">
-		<div class="list-group" id="sidebar">
+		<!-- <div class="list-group" id="sidebar">
 	  			<div class="list-group-item">
 	      			<h3 class="list-group-item-heading">Categories</h3>
 	    		</div>
@@ -45,15 +45,32 @@
 
  				?> 
 	    		</ul>	
+		</div> -->
+
+
+		<div id="affix_sidebar">
+		 	<div class="list-group panel" id="sidebar">
+		  		<div class="list-group-item">
+			      	<h4 class="list-group-item-heading">Categories</h4>
+			    </div>
+			    <?php 
+					$rows = getCategoryRows();
+					getCategory($rows);
+
+ 				?>
+		    	
+		  	</div>
 		</div>
+
+
+
 	</div>
 
 
 	<div class="col-md-9">
-	<?php 
-		getProducts();
-	?>
-
+		<?php 
+			getProducts();
+		?>
 	</div>
 
 </div>
