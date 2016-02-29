@@ -33,20 +33,7 @@
 
 <div class="row">
 	<div class="col-md-3">
-		<!-- <div class="list-group" id="sidebar">
-	  			<div class="list-group-item">
-	      			<h3 class="list-group-item-heading">Categories</h3>
-	    		</div>
-	    		<ul class="list-group">
-
-				<?php 
-					$rows = getCategoryRows();
-					getCategory($rows);
-
- 				?> 
-	    		</ul>	
-		</div> -->
-
+		
 
 		<div id="affix_sidebar">
 		 	<div class="list-group panel" id="sidebar">
@@ -54,7 +41,7 @@
 			      	<h4 class="list-group-item-heading">Categories</h4>
 			    </div>
 			    <?php 
-					$rows = getCategoryRows();
+					$rows = getRows('*', 'category');
 					getCategory($rows);
 
  				?>
@@ -90,84 +77,7 @@
 </body>
 </html>
 
-<!-- 
-		<div class="list-group list-group-all">
-	  			<div class="list-group-item">
-	      			<h3 class="list-group-item-heading">Categories</h3>
-	    		</div>
-
-	    		<div class="list-group-item list-group-item-color">
-	        			<a data-toggle="collapse" data-target="#collapse1">ITEM #1</a>
-
-	      			<span class="glyphicon glyphicon-search"></span>
-	    		</div>
-	    		<div id="collapse1" class="panel-collapse collapse">
-	      			<ul class="list-group">
-				        <li class="list-group-item">One</li>
-				        <li class="list-group-item">Two</li>
-				        <li class="list-group-item">Three</li>
-	      			</ul>
-	    		</div>
-
-	    		<div class="list-group-item list-group-item-color">
-	      
-	        			<a data-toggle="collapse" data-target="#collapse2">ITEM #2</a>
-	      			
-	    		</div>
-	    		<div id="collapse2" class="panel-collapse collapse">
-	      			<ul class="list-group">
-				        <li class="list-group-item">One</li>
-				        <li class="list-group-item">Two</li>
-				        <li class="list-group-item">Three</li>
-	      			</ul>
-	    		</div>
-
-
-	    		<div class="list-group-item list-group-item-color">
-	      
-	        			<a data-toggle="collapse" data-target="#collapse3">ITEM #2</a>
-	      			
-	    		</div>
-	    		<div id="collapse3" class="panel-collapse collapse">
-	      			<ul class="list-group">
-				        <li class="list-group-item">One</li>
-				        <li class="list-group-item">Two</li>
-				        <li class="list-group-item">Three</li>
-	      			</ul>
-	    		</div>
-
-	    		
-		</div>
- -->
 
 
 
-<!-- KDYBY NECO
-	<div class="row">
-		<div class="col-md-3">
-			<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-		</div>
-		<div class="col-md-3">
-			<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-		</div>
-		<div class="col-md-3">
-			<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-		</div>
-		<div class="col-md-3">
-			<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
-			<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-		</div>
-		<div class="col-md-3">
-			<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-		</div>
-		<div class="col-md-3">
-			<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-		</div>
-		<div class="col-md-3">
-			<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-		</div>
-	</div> -->
+

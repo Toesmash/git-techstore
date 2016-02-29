@@ -4,10 +4,10 @@
 $con = mysqli_connect("localhost","root","","techstore");
 
 // SPOCITA KOLKO JE RIADKOV V KATEGORIACH
-function getCategoryRows(){
+function getRows($selector, $database){
 
 	global $con;
-	$sql = "SELECT * FROM category";
+	$sql = "SELECT $selector FROM $database";
 	$result=mysqli_query($con,$sql);
 	$rowcount=mysqli_num_rows($result);
 	return $rowcount;
@@ -48,16 +48,9 @@ function getCategory($n_rows){
 		$cat_name = $row_cat['cat_name'];
 		echo '
 				<a href="#collapse'.$x.'" class="list-group-item list-group-item-info" data-toggle="collapse" 
-				data-parent="#affix_sidebar">'.$cat_name.'</a>';
+				data-parent="#affix_sidebar"><b>'.$cat_name.'</b></a>';
 		getSubCategory($x);
-
-		
-		
-
 	}
-
-
-	
 }
 
 
@@ -65,31 +58,73 @@ function getCategory($n_rows){
 function getSubCategory($collapse_n){
 	global $con;
 	$sql = "SELECT * FROM category";
-	$run_cat = mysqli_query($con, $sql);
-	$n_unique=3;
 
-	echo '<div class="collapse" id="collapse'.$collapse_n.'">';
-	for ($x=0; $x<$n_unique; $x++){
-		echo '<li class="list-group-item">ITEM #'.$x.'</li>';
-	}
-	echo '</div>';
+	$category_n = $collapse_n +1; 
+	$unique_brands = getRows('DISTINCT pro_brand', 'products WHERE pro_category="'.$category_n.'"');
 
-
-
-
+				echo '<div class="collapse" id="collapse'.$collapse_n.'">';
+					getBrand($category_n, $unique_brands, $collapse_n);
+				echo '</div>';
 }
 
 
+function getBrand($x, $unique, $collapse_n){
+	global $con;
+	for($i=0; $i<$unique; $i++){
+
+		$sql = "SELECT DISTINCT pro_brand FROM products WHERE pro_category='$x' ORDER BY pro_brand LIMIT 1 OFFSET $i";
+		$run_sql = mysqli_query($con, $sql);
+		while($row = mysqli_fetch_array($run_sql)){
+			$get_brand = $row['pro_brand'];
+			$sql2 = "SELECT brand_name FROM brands WHERE brand_id = $get_brand";
+			$run_sql2 = mysqli_query($con, $sql2);
+				while($row2 = mysqli_fetch_array($run_sql2)){
+					$get_brand_name = $row2['brand_name'];
+					echo '<li class="list-group-item sidebar_menu_affix"><a href="#">'.$get_brand_name.'</a></li>';
+				}
+				// echo '<p><h1>'.$co.'</h1>'.$get_brand_name.'</p>';
+				
+		}
+
+
+	}
+}
 
 
 function getProducts(){
 
 
 	if(!isset($_GET['category'])){
-		echo "
-
-		<h1>Nooo asi sa tu nic nepredava (KLIKNI NA KATEGORIU :)</h1>
-		";
+		echo '
+			<div class="row">
+				<div class="col-md-3">
+					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
+				</div>
+				<div class="col-md-3">
+					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
+				</div>
+				<div class="col-md-3">
+					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
+				</div>
+				<div class="col-md-3">
+					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
+				</div>
+				<div class="col-md-3">
+					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
+				</div>
+				<div class="col-md-3">
+					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
+				</div>
+				<div class="col-md-3">
+					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
+				</div>
+			</div>
+		';
 
 	}
 	else {
@@ -167,15 +202,10 @@ function getProducts(){
 }
 
 
-
-
-
-
-
-
 function calculateDPH($price, $tax){
 	return round($price / ($tax/100+1),2);
 }
+
 
 function insert(){
 		global $con;
@@ -205,9 +235,5 @@ function insert(){
 		}
 
 }
-
-
-
-
 
 ?>
