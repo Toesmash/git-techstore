@@ -224,10 +224,13 @@ height: 150px;
 
     max-width: 500px;
     padding-bottom: 25px;
+    width: 70%;
 }
 
 
-
+.floating_glyphicon {
+    float: right;
+}
 
 
 

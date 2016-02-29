@@ -46,15 +46,19 @@ function getCategory($n_rows){
 		$row_cat = mysqli_fetch_array($run_cat);
 		$cat_id = $row_cat['cat_id'];
 		$cat_name = $row_cat['cat_name'];
-		echo '
+		echo '	
+
 				<a href="#collapse'.$x.'" class="list-group-item list-group-item-info" data-toggle="collapse" 
-				data-parent="#affix_sidebar"><b>'.$cat_name.'</b></a>';
+				data-parent="#affix_sidebar"><b>'.$cat_name.'</b></a>
+
+
+			';
 		getSubCategory($x);
 	}
 }
 
 
-// VRATI VSETKY UNIQUE ZNACKY PRE KATEGORIE
+// VYTVORI COLLAPSE PANELI A VNUTRI VOLA FUNKCIU NA REQUEST VSETKYCH UNIQUE BRANDOV
 function getSubCategory($collapse_n){
 	global $con;
 	$sql = "SELECT * FROM category";
@@ -67,7 +71,7 @@ function getSubCategory($collapse_n){
 				echo '</div>';
 }
 
-
+// VRATI VSETKY UNIQUE ZNACKY PRE KATEGORIE
 function getBrand($x, $unique, $collapse_n){
 	global $con;
 	for($i=0; $i<$unique; $i++){
@@ -78,64 +82,33 @@ function getBrand($x, $unique, $collapse_n){
 			$get_brand = $row['pro_brand'];
 			$sql2 = "SELECT brand_name FROM brands WHERE brand_id = $get_brand";
 			$run_sql2 = mysqli_query($con, $sql2);
-				while($row2 = mysqli_fetch_array($run_sql2)){
+
+			while($row2 = mysqli_fetch_array($run_sql2)){
 					$get_brand_name = $row2['brand_name'];
-					echo '<li class="list-group-item sidebar_menu_affix"><a href="#">'.$get_brand_name.'</a></li>';
-				}
-				// echo '<p><h1>'.$co.'</h1>'.$get_brand_name.'</p>';
-				
+					echo '<li class="list-group-item sidebar_menu_affix"><a href="products.php?cat='.$x.'&brand='.$get_brand_name.'">'.$get_brand_name.'</a></li>';
+					
+			}
 		}
-
-
 	}
 }
 
+function getBrandProducts($cat_num, $brand_product){
 
-function getProducts(){
+		$sql = "SELECT products.* FROM products JOIN brands ON products.pro_brand = brands.brand_id WHERE q.pro_category = $cat_num AND t.brand_name = $brand_product";
 
 
-	if(!isset($_GET['category'])){
-		echo '
-			<div class="row">
-				<div class="col-md-3">
-					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-				</div>
-				<div class="col-md-3">
-					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-				</div>
-				<div class="col-md-3">
-					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-				</div>
-				<div class="col-md-3">
-					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-				</div>
-				<div class="col-md-3">
-					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-				</div>
-				<div class="col-md-3">
-					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-				</div>
-				<div class="col-md-3">
-					<img src="img/categories/mobile2.svg" alt="alt" class="img-category">
-				</div>
-			</div>
-		';
 
-	}
-	else {
+	
+}
+
+
+function getProducts($query){
 
 		global $con;
-		$cat_id = $_GET['category'];
 
 		$x = 0;
-		$sql = "SELECT * FROM products WHERE pro_category like $cat_id";
 
-
+		$sql = $query;
 		$run_pro = mysqli_query($con, $sql);
 
 		while ($row_products = mysqli_fetch_array($run_pro)) {
@@ -198,7 +171,6 @@ function getProducts(){
 			';
 			$x++;
 		}
-	}
 }
 
 

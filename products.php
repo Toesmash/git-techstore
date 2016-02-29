@@ -56,7 +56,25 @@
 
 	<div class="col-md-9">
 		<?php 
-			getProducts();
+			if(isset($_GET['category'])){
+				$cat_id = $_GET['category'];
+				getProducts("SELECT * FROM products WHERE pro_category like $cat_id");
+			}
+	
+			else if(isset($_GET['brand'], $_GET['cat'])){
+				$bra_id = $_GET['brand'];
+				$cat_id = $_GET['cat'];
+				getProducts("SELECT * FROM products JOIN brands ON products.pro_brand = brands.brand_id WHERE products.pro_category = $cat_id AND brands.brand_name = '$bra_id'");
+			}
+
+			else if(isset($_GET['everything'])){
+				getProducts("SELECT * FROM products WHERE pro_category");
+			}
+
+			else {
+					echo '<h1>You are not supposed to be here. A skillful monkey is working on fixing this "feature", so that this could not happen again. And go away now! Quickly</h1>';	
+			}
+
 		?>
 	</div>
 
