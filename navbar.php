@@ -9,6 +9,7 @@
           <li><a href="#mojucet">Moj ucet</a> 
           <li><a href="#signin">Prihlas sa</a> 
           <li><a href="#contact">Kontakt</a> 
+          <li><a href="admin/index.php">TEMP-ADMIN-LINK</a> 
         </ul>
       </div>
     </nav>

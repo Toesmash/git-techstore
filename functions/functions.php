@@ -38,14 +38,26 @@ function listData($database, $name, $id){
 // VRATI VSETKY KATEGORIE PRE DB + VSETKY PODKATEGORIE
 function getCategory($n_rows){
 	global $con;
+	// echo'<p>POCET ROWS'.$n_rows.'</p>';
 	$sql = "SELECT * FROM category";
 	$run_cat = mysqli_query($con, $sql);
+
+	$sql2 = "SELECT cat_id FROM category ORDER BY cat_id DESC LIMIT 1 OFFSET 0";
+	$result = mysqli_query($con, $sql);
+
+
+	$pole = array();
+	while ($row = mysqli_fetch_array($result)) {
+	  $pole[] = $row['cat_id'];
+	}
+
 
 	for ($x=0 ; $x<$n_rows; $x++){
 
 		$row_cat = mysqli_fetch_array($run_cat);
 		$cat_id = $row_cat['cat_id'];
 		$cat_name = $row_cat['cat_name'];
+
 		echo '	
 
 				<a href="#collapse'.$x.'" class="list-group-item list-group-item-info" data-toggle="collapse" 
@@ -53,21 +65,23 @@ function getCategory($n_rows){
 
 
 			';
-		getSubCategory($x);
+
+		getSubCategory($x, $pole[$x]);
 	}
 }
 
 
 // VYTVORI COLLAPSE PANELI A VNUTRI VOLA FUNKCIU NA REQUEST VSETKYCH UNIQUE BRANDOV
-function getSubCategory($collapse_n){
+function getSubCategory($collapse_n, $uaaaa){
 	global $con;
 	$sql = "SELECT * FROM category";
 
-	$category_n = $collapse_n +1; 
-	$unique_brands = getRows('DISTINCT pro_brand', 'products WHERE pro_category="'.$category_n.'"');
+	// $category_n = $collapse_n +1; 
+
+	$unique_brands = getRows('DISTINCT pro_brand', 'products WHERE pro_category="'.$uaaaa.'"');
 
 				echo '<div class="collapse" id="collapse'.$collapse_n.'">';
-					getBrand($category_n, $unique_brands, $collapse_n);
+					getBrand($uaaaa, $unique_brands, $collapse_n);
 				echo '</div>';
 }
 
@@ -92,14 +106,14 @@ function getBrand($x, $unique, $collapse_n){
 	}
 }
 
-function getBrandProducts($cat_num, $brand_product){
+// function getBrandProducts($cat_num, $brand_product){
 
-		$sql = "SELECT products.* FROM products JOIN brands ON products.pro_brand = brands.brand_id WHERE q.pro_category = $cat_num AND t.brand_name = $brand_product";
+// 		$sql = "SELECT products.* FROM products JOIN brands ON products.pro_brand = brands.brand_id WHERE q.pro_category = $cat_num AND t.brand_name = $brand_product";
 
 
 
 	
-}
+// }
 
 
 function getProducts($query){
@@ -132,8 +146,6 @@ function getProducts($query){
 					<p>'.$product_price.'€</p>
 					</div>
 					<button class="btn btn-primary btn-sm">Pridaj do kosika</button>
-					
-
 				</div>
 
 				<div id="modalnr_'.$x.'" class="modal fade" role="dialog">
@@ -179,32 +191,86 @@ function calculateDPH($price, $tax){
 }
 
 
-function insert(){
+function insert($switcher){
 		global $con;
 
-		$pro_name = $_POST['pro_name'];
-		$pro_cat = $_POST['pro_cat'];
-		$pro_brand = $_POST['pro_brand'];
-		$pro_price = $_POST['pro_price'];
-		$pro_desc = $_POST['pro_desc'];
-		$pro_keywords = $_POST['pro_keywords'];
+		if($switcher=="1"){
+			$pro_name = $_POST['pro_name'];
+			$pro_cat = $_POST['pro_cat'];
+			$pro_brand = $_POST['pro_brand'];
+			$pro_price = $_POST['pro_price'];
+			$pro_desc = $_POST['pro_desc'];
+			$pro_keywords = $_POST['pro_keywords'];
 
-		$pro_image = $_FILES['pro_image']['name'];
-		$pro_image_tmp = $_FILES['pro_image']['tmp_name'];
+			$pro_image = $_FILES['pro_image']['name'];
+			$pro_image_tmp = $_FILES['pro_image']['tmp_name'];
 
-		move_uploaded_file($pro_image_tmp, 'product_images/'.$pro_image.'');
-		$sql = "INSERT into products (pro_category, pro_brand, pro_name, pro_price, pro_desc, pro_image, pro_keywords) 
-		VALUES('$pro_cat','$pro_brand','$pro_name','$pro_price','$pro_desc','$pro_image','$pro_keywords')";
+			move_uploaded_file($pro_image_tmp, 'product_images/'.$pro_image.'');
+			$sql = "INSERT into products (pro_category, pro_brand, pro_name, pro_price, pro_desc, pro_image, pro_keywords) 
+			VALUES('$pro_cat','$pro_brand','$pro_name','$pro_price','$pro_desc','$pro_image','$pro_keywords')";
+			
+
+			if ($con->query($sql) === TRUE) {
+			    echo 	'
+			    		<div class="alert alert-success" role="alert">
+  							<strong>Success!</strong> You have added a product to the database!
+						</div>
+						<script>
+							window.setTimeout(function() {
+    							$(".alert").fadeTo(500, 0).slideUp(500, function(){
+        							$(this).remove(); 
+    							});
+							}, 3000);
+
+						</script>
 
 
-		if ($con->query($sql) === TRUE) {
-		    echo 	'<div class="alert alert-success">
-    					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   						<strong>Super!</strong> Bol pridany novy produkt.
-  					</div>';
-		} else {
-		    echo "Chyba: " . $sql . "<br>" . $con->error;
+						';
+			} else {
+			    echo "Chyba: " . $sql . "<br>" . $con->error;
+			}
 		}
+
+		else if($switcher=="2"){
+			
+			$name = $_POST['cat_name'];
+
+			$sql = "INSERT into category (cat_name) 
+			VALUES('$name')";
+			
+
+			if ($con->query($sql) === TRUE) {
+			    echo 	'
+			    		<div class="alert alert-success" role="alert">
+  							<strong>Success!</strong> You have added a category to the database successfully!
+						</div>
+						<script>
+							window.setTimeout(function() {
+    							$(".alert").fadeTo(500, 0).slideUp(500, function(){
+        							$(this).remove(); 
+    							});
+							}, 3000);
+
+						</script>
+
+
+						';
+			} else {
+			    echo "Chyba: " . $sql . "<br>" . $con->error;
+			}
+
+
+
+
+
+		}
+
+
+		else if($switcher=="3"){
+			echo'<p>CISLO 3:'.$switcher.'</p>';
+		}
+
+		
 
 }
 

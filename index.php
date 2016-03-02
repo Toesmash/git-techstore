@@ -158,13 +158,6 @@
         </p>
       </div>
     </div>
-      
-
-
-  <div class="navbar navbar-default">
-    <!-- <a href="#" onclick="$('#myModal').modal({'backdrop': 'static'});" class="btn btn-warning">Launch demo modal</a> -->
-    <a href="admin/insert.php"><span class="glyphicon glyphicon-plus"></span></a>
-  </div>
 
 
    </div> <!--Container -->

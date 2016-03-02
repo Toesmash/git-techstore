@@ -1,0 +1,35 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+/*--------------------------------------------STRUKTURA*/
+
+
+body{
+/*background-color: lightgrey;*/
+font-family: 'Open Sans', sans-serif;
+padding-top: 52px;
+}
+
+.submenu {
+	/*border: 1px solid black;*/
+	padding-top: 35px;
+	padding-left: 35px;
+	font-size: 17px;
+}
+
+#new_items {
+	font-size: 14px;
+}
+
+
+.page-header {
+	/*border: 1px solid black;*/
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+
+
+/*.product_price, .product_image, .product_title,.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,  .col-md-7,  
+.col-md-8,  .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-sm-4{
+    border: 1px solid darkgrey;
+}*/
