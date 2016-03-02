@@ -53,9 +53,9 @@ function getCategory($n_rows){
 
 
 	for ($x=0 ; $x<$n_rows; $x++){
-
+		// echo'<p>POCET ROWS'.$x.'</p>';
 		$row_cat = mysqli_fetch_array($run_cat);
-		$cat_id = $row_cat['cat_id'];
+		// $cat_id = $row_cat['cat_id'];
 		$cat_name = $row_cat['cat_name'];
 
 		echo '	
@@ -72,34 +72,35 @@ function getCategory($n_rows){
 
 
 // VYTVORI COLLAPSE PANELI A VNUTRI VOLA FUNKCIU NA REQUEST VSETKYCH UNIQUE BRANDOV
-function getSubCategory($collapse_n, $uaaaa){
+function getSubCategory($collapse_number, $product_category){
 	global $con;
 	$sql = "SELECT * FROM category";
 
-	// $category_n = $collapse_n +1; 
+	// echo'<p>POCET BRANDS'.$collapse_number.'</p>';
 
-	$unique_brands = getRows('DISTINCT pro_brand', 'products WHERE pro_category="'.$uaaaa.'"');
+	$unique_brands = getRows('DISTINCT pro_brand', 'products WHERE pro_category="'.$product_category.'"');
 
-				echo '<div class="collapse" id="collapse'.$collapse_n.'">';
-					getBrand($uaaaa, $unique_brands, $collapse_n);
+				echo '<div class="collapse" id="collapse'.$collapse_number.'">';
+					getBrand($product_category, $unique_brands);
 				echo '</div>';
 }
 
 // VRATI VSETKY UNIQUE ZNACKY PRE KATEGORIE
-function getBrand($x, $unique, $collapse_n){
+function getBrand($product_category, $unique_brands){
 	global $con;
-	for($i=0; $i<$unique; $i++){
+	for($i=0; $i<$unique_brands; $i++){
 
-		$sql = "SELECT DISTINCT pro_brand FROM products WHERE pro_category='$x' ORDER BY pro_brand LIMIT 1 OFFSET $i";
+		$sql = "SELECT DISTINCT pro_brand FROM products WHERE pro_category='$product_category' ORDER BY pro_brand LIMIT 1 OFFSET $i";
 		$run_sql = mysqli_query($con, $sql);
 		while($row = mysqli_fetch_array($run_sql)){
-			$get_brand = $row['pro_brand'];
-			$sql2 = "SELECT brand_name FROM brands WHERE brand_id = $get_brand";
+			$brand_id = $row['pro_brand'];
+
+			$sql2 = "SELECT brand_name FROM brands WHERE brand_id = $brand_id";
 			$run_sql2 = mysqli_query($con, $sql2);
 
 			while($row2 = mysqli_fetch_array($run_sql2)){
 					$get_brand_name = $row2['brand_name'];
-					echo '<li class="list-group-item sidebar_menu_affix"><a href="products.php?cat='.$x.'&brand='.$get_brand_name.'">'.$get_brand_name.'</a></li>';
+					echo '<li class="list-group-item sidebar_menu_affix"><a href="products.php?cat='.$product_category.'&brand='.$get_brand_name.'">'.$get_brand_name.'</a></li>';
 					
 			}
 		}
@@ -109,10 +110,6 @@ function getBrand($x, $unique, $collapse_n){
 // function getBrandProducts($cat_num, $brand_product){
 
 // 		$sql = "SELECT products.* FROM products JOIN brands ON products.pro_brand = brands.brand_id WHERE q.pro_category = $cat_num AND t.brand_name = $brand_product";
-
-
-
-	
 // }
 
 
@@ -190,6 +187,29 @@ function calculateDPH($price, $tax){
 	return round($price / ($tax/100+1),2);
 }
 
+function returnAlert($string, $sql){
+	global $con;
+
+	if ($con->query($sql) === TRUE) {
+		echo 	'
+			<div class="alert alert-success text-center" role="alert">
+ 				<strong>Success!</strong> You have added a '.$string.' to the database!
+			</div>
+			<script>
+				window.setTimeout(function() {
+					$(".alert").fadeTo(500, 0).slideUp(500, function(){
+        				$(this).remove(); 
+    				});
+    			}, 3000);
+			</script>
+		';
+	} 
+	else {
+		echo "Chyba: " . $sql . "<br>" . $con->error;
+	}
+
+}
+
 
 function insert($switcher){
 		global $con;
@@ -209,65 +229,27 @@ function insert($switcher){
 			$sql = "INSERT into products (pro_category, pro_brand, pro_name, pro_price, pro_desc, pro_image, pro_keywords) 
 			VALUES('$pro_cat','$pro_brand','$pro_name','$pro_price','$pro_desc','$pro_image','$pro_keywords')";
 			
-
-			if ($con->query($sql) === TRUE) {
-			    echo 	'
-			    		<div class="alert alert-success" role="alert">
-  							<strong>Success!</strong> You have added a product to the database!
-						</div>
-						<script>
-							window.setTimeout(function() {
-    							$(".alert").fadeTo(500, 0).slideUp(500, function(){
-        							$(this).remove(); 
-    							});
-							}, 3000);
-
-						</script>
-
-
-						';
-			} else {
-			    echo "Chyba: " . $sql . "<br>" . $con->error;
-			}
+			returnAlert("product", $sql);
+			
 		}
 
 		else if($switcher=="2"){
-			
 			$name = $_POST['cat_name'];
 
 			$sql = "INSERT into category (cat_name) 
 			VALUES('$name')";
-			
 
-			if ($con->query($sql) === TRUE) {
-			    echo 	'
-			    		<div class="alert alert-success" role="alert">
-  							<strong>Success!</strong> You have added a category to the database successfully!
-						</div>
-						<script>
-							window.setTimeout(function() {
-    							$(".alert").fadeTo(500, 0).slideUp(500, function(){
-        							$(this).remove(); 
-    							});
-							}, 3000);
-
-						</script>
-
-
-						';
-			} else {
-			    echo "Chyba: " . $sql . "<br>" . $con->error;
-			}
-
-
-
-
-
+			returnAlert("category", $sql); //vlastne tu aj posiela sqlku do databazy
 		}
 
 
 		else if($switcher=="3"){
-			echo'<p>CISLO 3:'.$switcher.'</p>';
+			$name = $_POST['brand_name'];
+
+			$sql = "INSERT into brands (brand_name) 
+			VALUES('$name')";
+
+			returnAlert("brand", $sql); //vlastne tu aj posiela sqlku do databazy
 		}
 
 		
