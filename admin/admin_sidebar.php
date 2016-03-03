@@ -7,7 +7,11 @@
 		<li><a href="add_category.php"><div class="col-sm-1"></div><span class="glyphicon glyphicon-plus"></span> Add Category</a></li>
 		<li><a href="add_brand.php"><div class="col-sm-1"></div><span class="glyphicon glyphicon-plus"></span> Add Brand</a></li>
 		</ul>
-	<li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Modify</a></li>
-	<li><a href="#"><span class="glyphicon glyphicon-remove-sign"></span> Delete</a></li>
+	<li><a href="#modify_items" data-toggle="collapse"><span class="glyphicon glyphicon-remove-sign"></span> Modify</a></li>
+		<ul class="nav collapse" id="modify_items">
+		    <li><a href="modify_products.php"><div class="col-sm-1"></div><span class="glyphicon glyphicon-plus"></span> Modify Product</a></li>
+		    <li><a href="modify_category.php"><div class="col-sm-1"></div><span class="glyphicon glyphicon-plus"></span> Modify Category</a></li>
+		    <li><a href="modify_brand.php"><div class="col-sm-1"></div><span class="glyphicon glyphicon-plus"></span> Modify Brand</a></li>
+		</ul>
 	<li><a href="#"><span class="glyphicon glyphicon-usd"></span> Price List</a></li>
 </ul>

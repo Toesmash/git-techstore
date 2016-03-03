@@ -8,7 +8,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="../index.php">Live site</a>
           </ul>
-            <ul class="nav navbar-nav" style="float: right">
+          <ul class="nav navbar-nav" style="float: right">
             <li><a href="#contact" class="navbar-nav pull-right">Sign in</a></li>
           </ul>
         </div>

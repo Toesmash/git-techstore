@@ -21,7 +21,7 @@
 		<div class="col-md-3">
 			<?php include ("admin_sidebar.php"); ?>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-8">
 			
 
 		</div>

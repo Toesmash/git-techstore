@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-/*--------------------------------------------STRUKTURA*/
 
 
 body{
@@ -16,7 +15,7 @@ padding-top: 52px;
 	font-size: 17px;
 }
 
-#new_items {
+#new_items, #modify_items {
 	font-size: 14px;
 }
 
@@ -25,6 +24,17 @@ padding-top: 52px;
 	/*border: 1px solid black;*/
 	margin-left: 20px;
 	margin-right: 20px;
+}
+
+.col-md-8 {
+	padding-top: 35px;
+}
+
+
+/*--------------------------------------------TABLE*/
+
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+  background-color: rgba(114, 114, 114, 0.15);
 }
 
 

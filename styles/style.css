@@ -36,13 +36,9 @@ nav {
 .navbar-brand {
     margin-right: 50px;
     margin-top: -2px;
-    /*background-color: yellow;*/
 }
 
 .navbar-header {
-    /*width: 100%;*/
-    /*background-color: yellow;*/
-    /*border: 1px solid blue;*/
     width: 100px;
 }
 
@@ -50,18 +46,23 @@ nav {
 #my-navbar.navbar-default {
     font-size: 14px;
     border-bottom-width: 1px;
+    padding-bottom: 5px;
 }
-#my-navbar.navbar-default .navbar-nav>li>a:hover,
-#my-navbar.navbar-default .navbar-nav>li>a:focus {
+
+#my-navbar.navbar-default .navbar-nav>li>a:hover{
     color: white;
     background-color: rgba(16, 138, 209, 1);
+    border-radius: 5px;
+
 }
+
 #my-navbar.navbar-default .navbar-nav>li {
-
     margin-left: 20px;
-    /*border: 1px solid black;*/
 }
 
+#my-navbar.navbar-default .navbar-nav>li:first-child {
+    margin-left: 30px;
+}
 
 
 /*--------------------------------------------HEADER*/
@@ -196,7 +197,7 @@ padding-top: 20px;
 
 }
 
-/*----PRODUCTS---MODAL--*/
+/*--------------------------------------PRODUCTS---MODAL--*/
 .modal-header, .modal-header h4,.close {
       background-color: #108ad1;
       color:white ;
@@ -234,11 +235,66 @@ height: 150px;
 
 
 
+
+/*--------------------------------------------FLOATING-SING-IN-SCREEN*/
+
+.sign_up_form {
+    margin: 0 auto;
+    width:80% /* value of your choice which suits your alignment */
+}
+
+.sign_up_form p {
+    font-size: 11px;
+    margin-bottom: 0px;
+    color: white;
+}
+
+.sign_up_form a {
+    float: right;
+    background-color: #60869F;
+    padding: 5px 7px 5px 7px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+#sign_in_div {
+    z-index: 1000;
+    top: 60px;
+    position: absolute;
+    /*background-color: #2F3655;*/
+    background: -moz-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #48364B), color-stop(100%, #252D4E)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* ie10+ */
+    background: linear-gradient(125deg, #48364B 0%, #252D4E 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48364B', endColorstr='#252D4E',GradientType=1 ); /* ie6-9 */
+
+    min-height: 100px;
+    border-radius: 5px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    display: none;
+
+}
+
+#sign_in_div.affix-top {
+    position: fixed;
+  }
+  
+  #sign_in_div.affix {
+    position: fixed;
+    top: 60px;
+  }
+
+
+
 /*--------------------------------------------COLUMNS*/
 
 /*.product_price, .product_image, .product_title,.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,  .col-md-7,  
 .col-md-8,  .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     border: 1px solid darkgrey;
-}*/
-
+}
+*/
 

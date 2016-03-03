@@ -5,11 +5,14 @@
           <a href="index.php"><img src="img/logo-primary2.svg" class="navbar-brand"></a>
         </div>
         <ul class="nav navbar-nav">
-          <li><a href="products.php?everything">Ponuka</a> 
-          <li><a href="#mojucet">Moj ucet</a> 
-          <li><a href="#signin">Prihlas sa</a> 
+          <li><a href="products.php?everything">Ponuka</a>
           <li><a href="#contact">Kontakt</a> 
-          <li><a href="admin/index.php">TEMP-ADMIN-LINK</a> 
+          <li><a href="admin/index.php">TEMP-ADMIN-LINK</a>
+
         </ul>
+        <ul class="nav navbar-nav" style="float: right">
+            <li><a id="sign_in_affix" href="javascript:;" class="navbar-nav pull-right">Sign in</a></li>
+        </ul>
+
       </div>
     </nav>
