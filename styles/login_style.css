@@ -1,0 +1,102 @@
+/*--------------------------------------------FLOATING-SING-IN-SCREEN*/
+
+.sign_up_form {
+    margin: 0 auto;
+    width:80% 
+
+}
+
+.sign_up_form p {
+    margin-left: 5px;
+    font-size: 11px;
+    margin-bottom: 0px;
+    color: white;
+}
+
+.sign_up_form a {
+    margin-left: 5px;
+    font-size: 10px;
+    color: white;
+    text-decoration: none;
+    float: left;
+    color: darkgrey;
+}
+.sign_up_form a:hover, .sign_up_form a:active {
+    color: lightblue;
+    text-decoration: underline;
+}
+
+
+.sign_up_form i {
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+#sign_in_div {
+    border: 1px outset darkorchid;
+    z-index: 1000;
+    top: 60px;
+    position: absolute;
+    /*background-color: #2F3655;*/
+    background: -moz-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #48364B), color-stop(100%, #252D4E)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* ie10+ */
+    background: linear-gradient(125deg, #48364B 0%, #252D4E 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48364B', endColorstr='#252D4E',GradientType=1 ); /* ie6-9 */
+
+    min-height: 100px;
+    border-radius: 5px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+
+
+    
+    display: none;
+
+}
+
+#sign_in_div.affix-top {
+    position: fixed;
+  }
+  
+#sign_in_div.affix {
+    position: fixed;
+    top: 60px;
+}
+
+
+.sign_in_button {
+    float: right;
+}
+
+
+.sign_in_button.btn-md {
+    border: 1px solid #6f5499;
+}  
+
+.sign_in_button, .sign_in_button:link, .sign_in_button:visited {
+    background-color: transparent;
+    border-radius: 5;
+    color: #6f5499;
+}
+.sign_in_button:active, .sign_in_button:hover {
+    background-color: #6f5499;
+    color: #fff
+}
+
+
+
+
+
+
+

@@ -2,24 +2,21 @@ function submitForm() {
 	document.getElementById("formular").submit();
 }
 
-$( "#sign_in_affix" ).click(function() {
+$("#sign_in_affix" ).click(function() {
 	$("#sign_in_div").fadeToggle();
 
 });
 
-$('sign_in_affix').click(function(){
-    if($(this).hasClass('active')){
-        $(this).removeClass('active')
-    } else {
-        $(this).addClass('active')
-    }
+$("#closer" ).click(function() {
+	$("#sign_in_div").fadeToggle();
+
 });
 
 $('#sign_in_div').affix();	
-
 
 $('#sidebar').affix({
 	offset: {
 		top: $('header').height()
 	}
 });	
+

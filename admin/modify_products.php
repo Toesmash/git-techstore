@@ -1,3 +1,12 @@
+<?php 
+  include("../functions/functions.php");
+    $category_id = -1;
+
+  if(isset($_POST['ctgry'])){
+    $category_id = $_POST['ctgry_id'];
+  }
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,35 +30,52 @@
         <div class="col-md-3">
         <?php include ("admin_sidebar.php"); ?>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 ">
+
+          <div class="row selectCategory">
+            <form class="form" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <div class="col-md-4">
+                  <select class="form-control" name="ctgry_id">
+                  <option>Vyber z kategorie</option>
+                  <?php 
+                    listData(category, cat_name, cat_id);
+                  ?>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <input class=" btn btn-primary btn-block text-center" type="submit" name="ctgry" value="Submit">
+                </div>
+              </div>
+            </form>
+          </div>
+
+
             <div class="panel panel-primary">
                 <div class="panel panel-heading text-center"><h4>Modify products in database</h4></div>
                 <div class="panel-body">
                   <table class="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th>Product name</th>
+                        <th>Product ID</th>
+                        <th>Name</th>
                         <th>Brand</th>
                         <th>Price</th>
+                        <th>Image</th>
                         <th>Edit</th>
                         <th>Delete</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                        <td><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
-                        <td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Jacob</td>
-                        <td><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
-                        <td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
-                      </tr>
+                    <?php  
+                      if ($category_id > 0) {
+                        adminProducts($category_id);
+                      }
+                      else {
+                        
+
+                      }
+                    ?>
                     </tbody>
                   </table>
                 </div>
@@ -58,8 +84,9 @@
     </div>
 
 
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+ <script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="../script.js"></script>
 </body>
 </html>

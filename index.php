@@ -1,3 +1,44 @@
+<?php 
+
+  $alert_error = '';
+  if(isset($_GET['login_error'])){
+    if($_GET['login_error']=='empty_submit'){
+      $alert_error = '<div class="alert alert-danger text-center">Password or Username was empty!</div>
+        <script>window.setTimeout(function() {
+          $(".alert").fadeTo(500, 0).slideUp(500, function(){
+              $(this).remove(); 
+            });
+          }, 5000);
+        </script>';
+    }
+    else if($_GET['login_error'] == 'wrong_submit') {
+      $alert_error = '<div class="alert alert-danger text-center">Wrong Username or Password! Please enter correct information.</div>
+        <script>window.setTimeout(function() {
+          $(".alert").fadeTo(500, 0).slideUp(500, function(){
+              $(this).remove(); 
+            });
+          }, 5000);
+        </script>
+      ';
+    }
+
+    else if($_GET['login_error'] == 'query_error') {
+      $alert_error = '<div class="alert alert-danger text-center">Query error, please contact us!</div>
+        <script>window.setTimeout(function() {
+          $(".alert").fadeTo(500, 0).slideUp(500, function(){
+              $(this).remove(); 
+            });
+          }, 5000);
+        </script>
+      ';
+    }
+
+  }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +57,9 @@
 <body>
   <div class="container-fluid">
     <?php include ("navbar.php"); ?>
-    <?php include ("login.php"); ?>
+    <?php 
+      echo $alert_error;
+    ?>
 
 
     <!-- HEADER  -->

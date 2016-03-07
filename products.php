@@ -22,7 +22,6 @@
 <div class="container-fluid">
 	<!-- NAVBAR -->
     <?php include ("navbar.php"); ?>
-    <?php include ("login.php"); ?>
     
 	<header>
 		<div class="jumbotron">

@@ -9,9 +9,10 @@
             <li class="active"><a href="../index.php">Live site</a>
           </ul>
           <ul class="nav navbar-nav" style="float: right">
-            <li><a href="#contact" class="navbar-nav pull-right">Sign in</a></li>
+            <li><a id="sign_in_affix" href="javascript:;" class="navbar-nav pull-right">Sign in</a></li>
           </ul>
         </div>
       </div>
     </div>
 
+<?php include ("../login_affix.php"); ?>

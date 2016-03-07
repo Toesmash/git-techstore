@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import "login_style.css";
 
 /*--------------------------------------------STRUKTURA*/
 
@@ -46,7 +47,7 @@ nav {
 #my-navbar.navbar-default {
     font-size: 14px;
     border-bottom-width: 1px;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
 }
 
 #my-navbar.navbar-default .navbar-nav>li>a:hover{
@@ -67,7 +68,7 @@ nav {
 
 /*--------------------------------------------HEADER*/
 #header{
-    height: 100%;
+    /*height: 100%;*/
     padding-top: 50px;
     padding-bottom: 50px;
     /*background-color: yellow;*/
@@ -235,64 +236,36 @@ height: 150px;
 
 
 
+/*-----------------------------------------REGISTRATION--*/
+.reg_jumb {
 
-/*--------------------------------------------FLOATING-SING-IN-SCREEN*/
-
-.sign_up_form {
-    margin: 0 auto;
-    width:80% /* value of your choice which suits your alignment */
+    padding: 0px;
 }
 
-.sign_up_form p {
-    font-size: 11px;
-    margin-bottom: 0px;
-    color: white;
+.control-label {
+    padding-right: 20px;
+    font-weight: bold;
 }
 
-.sign_up_form a {
-    float: right;
-    background-color: #60869F;
-    padding: 5px 7px 5px 7px;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
+.reg_customer {
+
+    padding-bottom: 40px;
 }
 
-#sign_in_div {
-    z-index: 1000;
-    top: 60px;
-    position: absolute;
-    /*background-color: #2F3655;*/
-    background: -moz-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* ff3.6+ */
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #48364B), color-stop(100%, #252D4E)); /* safari4+,chrome */
-    background: -webkit-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* opera 11.10+ */
-    background: -ms-linear-gradient(325deg, #48364B 0%, #252D4E 100%); /* ie10+ */
-    background: linear-gradient(125deg, #48364B 0%, #252D4E 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48364B', endColorstr='#252D4E',GradientType=1 ); /* ie6-9 */
+/*-----------------------------------------ALERTS--*/
+.alert.alert-success {
 
-    min-height: 100px;
-    border-radius: 5px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    display: none;
-
+    margin-top: 5px;
+    height: 60px;
+    font-size: 1.5em;
 }
-
-#sign_in_div.affix-top {
-    position: fixed;
-  }
-  
-  #sign_in_div.affix {
-    position: fixed;
-    top: 60px;
-  }
-
-
+.alert.alert-danger {
+    margin-top: 7px;
+}
 
 /*--------------------------------------------COLUMNS*/
 
-/*.product_price, .product_image, .product_title,.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,  .col-md-7,  
+/*.control-label, .jumbotron, .product_price, .product_image, .product_title,.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,  .col-md-7,  
 .col-md-8,  .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     border: 1px solid darkgrey;
 }

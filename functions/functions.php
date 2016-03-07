@@ -14,6 +14,38 @@ function getRows($selector, $database){
 
 }
 
+//ZOBRAZI VSETKY PRODUKTY
+function adminProducts($category_id){
+	global $con;
+	$sql = 'SELECT products.pro_id, products.pro_name, brands.brand_name, products.pro_price, products.pro_image FROM products JOIN brands ON pro_brand = brand_id WHERE pro_category = '.$category_id.'';
+
+	$run_data = mysqli_query($con, $sql);
+
+	while ($data = mysqli_fetch_array($run_data)){
+		$data_id = $data['pro_id'];
+		$data_name = $data['pro_name'];
+		$data_brand = $data['brand_name'];	
+		$data_price = $data['pro_price'];
+		$data_image = $data['pro_image'];
+
+		echo '<tr>
+				<td scope="row">'.$data_id.'</td>
+				<td>'.$data_name.'</td>
+				<td>'.$data_brand.'</td>
+				<td>'.$data_price.' €</td>
+				<td><img src="product_images/'.$data_image.'" class="imageClip" /></td>
+				<td><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
+				<td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
+             </tr>';
+
+
+
+
+	}
+
+
+}
+
 
 //VYPISE IBA NAZVY DAT V TABULKE
 function listData($database, $name, $id){
@@ -193,14 +225,15 @@ function returnAlert($string, $sql){
 	if ($con->query($sql) === TRUE) {
 		echo 	'
 			<div class="alert alert-success text-center" role="alert">
- 				<strong>Success!</strong> You have added a '.$string.' to the database!
+ 				<strong>Success!</strong> '.$string.'
 			</div>
 			<script>
 				window.setTimeout(function() {
 					$(".alert").fadeTo(500, 0).slideUp(500, function(){
-        				$(this).remove(); 
+    					$(this).remove(); 
     				});
-    			}, 3000);
+			}, 5000);
+
 			</script>
 		';
 	} 
@@ -210,7 +243,7 @@ function returnAlert($string, $sql){
 
 }
 
-
+ 
 function insert($switcher){
 		global $con;
 
@@ -229,7 +262,7 @@ function insert($switcher){
 			$sql = "INSERT into products (pro_category, pro_brand, pro_name, pro_price, pro_desc, pro_image, pro_keywords) 
 			VALUES('$pro_cat','$pro_brand','$pro_name','$pro_price','$pro_desc','$pro_image','$pro_keywords')";
 			
-			returnAlert("product", $sql);
+			returnAlert("You have added a product to the database!", $sql);
 			
 		}
 
@@ -239,7 +272,7 @@ function insert($switcher){
 			$sql = "INSERT into category (cat_name) 
 			VALUES('$name')";
 
-			returnAlert("category", $sql); //vlastne tu aj posiela sqlku do databazy
+			returnAlert("You have added a category to the database!", $sql); //vlastne tu aj posiela sqlku do databazy
 		}
 
 
@@ -249,7 +282,25 @@ function insert($switcher){
 			$sql = "INSERT into brands (brand_name) 
 			VALUES('$name')";
 
-			returnAlert("brand", $sql); //vlastne tu aj posiela sqlku do databazy
+			returnAlert("You have added a brand to the database!", $sql); //vlastne tu aj posiela sqlku do databazy
+		}
+
+		else if($switcher=="4"){
+			$username = $_POST['reg_username'];
+			$name = $_POST['reg_name'];
+			$surname = $_POST['reg_surname'];
+			$email = $_POST['reg_email'];
+			$password = $_POST['reg_psswrd'];
+			$phone = $_POST['reg_phone'];
+			$city = $_POST['reg_city'];
+			$country = $_POST['reg_country'];
+			$street = $_POST['reg_street'];
+			$psc = $_POST['reg_psc'];
+			$timestamp = date('Y-m-d H:i:s');
+
+			$sql = "INSERT INTO accounts (acc_username, acc_name, acc_surname, acc_email, acc_psswrd, acc_phone, acc_city, acc_country, acc_street, acc_psc, acc_opendate) VALUES ('$username', '$name','$surname','$email','$password','$phone','$city','$country','$street','$psc','$timestamp')";
+			// print_r($sql);
+			returnAlert("You have sucessfully created an account!", $sql); //vlastne tu aj posiela sqlku do databazy
 		}
 
 		
