@@ -4,20 +4,24 @@
     $db = '';
     $name_of_id = '';
 
-  if(isset($_GET['id']) && isset($_GET['db']) && isset($_GET['idname'])){
-	$id = mysql_real_escape_string($_GET['id']);
-	$db = mysql_real_escape_string($_GET['db']);
-	$name_of_id = mysql_real_escape_string($_GET['idname']);
+	if(isset($_GET['id']) && isset($_GET['db']) && isset($_GET['idname'])){
+		$id = mysql_real_escape_string($_GET['id']);
+		$db = mysql_real_escape_string($_GET['db']);
+		$name_of_id = mysql_real_escape_string($_GET['idname']);
 
-  }
+	}
 
 
-  if(isset($_POST['update'])){
+  	if(isset($_POST['update_product'])){
   		update("1");
+	}
 
-  	
-		// foreach ($_POST as $key => $value)
-  //       echo $key.'='.$value.'<br />';
+	if(isset($_POST['update_category'])){
+  		update("2");
+	}
+
+	if(isset($_POST['update_brand'])){
+  		update("3");
 	}
  ?>
 
@@ -47,7 +51,15 @@
 		<div class="col-md-8">
 			<div class="page-header"><h1>Update product in database!</h1></div>
 			<?php  
-				updateAdmin($db,$name_of_id, $id);
+				if ($name_of_id == 'pro_id'){
+					updateAdmin($db,$name_of_id, $id);
+				}
+				else if($name_of_id == 'cat_id') {
+					updateAdmin($db, $name_of_id, $id);
+				}
+				else if($name_of_id == 'brand_id') {
+					updateAdmin($db, $name_of_id, $id);
+				}
 			?>
 			
 		</div>

@@ -71,10 +71,6 @@
                       if ($category_id > 0) {
                         adminProducts($category_id);
                       }
-                      else {
-                        
-
-                      }
                     ?>
                     </tbody>
                   </table>

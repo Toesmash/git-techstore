@@ -40,6 +40,53 @@ function adminProducts($category_id){
 	}
 }
 
+function adminBrands($database){
+	global $con;
+	$sql = 'SELECT * FROM '.$database.'';
+
+	$run_data = mysqli_query($con, $sql);
+
+
+	if($database=='brands'){
+		while ($data = mysqli_fetch_array($run_data)){
+		$data_id = $data['brand_id'];
+		$data_name = $data['brand_name'];
+		echo '<tr>
+				<td scope="row">'.$data_id.'</td>
+				<td>'.$data_name.'</td>
+				<td><a href="update.php?id='.$data_id.'&db=brands&idname=brand_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
+				<td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
+             </tr>';
+	}
+
+	}
+
+}
+
+function adminCategory($database){
+	global $con;
+	$sql = 'SELECT * FROM '.$database.'';
+
+	$run_data = mysqli_query($con, $sql);
+
+
+	if($database=='category'){
+		while ($data = mysqli_fetch_array($run_data)){
+		$data_id = $data['cat_id'];
+		$data_name = $data['cat_name'];
+		echo '<tr>
+				<td scope="row">'.$data_id.'</td>
+				<td>'.$data_name.'</td>
+				<td><a href="update.php?id='.$data_id.'&db=category&idname=cat_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
+				<td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
+             </tr>';
+	}
+
+	}
+	
+
+}
+
 
 function updateAdmin($database,$idname, $id ){
 	global $con;
@@ -147,7 +194,7 @@ function updateAdmin($database,$idname, $id ){
 			    	<div class="row">
 			    		<div class="col-sm-2"></div>
 			      		<div class="col-sm-8">
-			        		<input class=" btn btn-warning btn-block text-center" action="update.php" type="submit" name="update" value="Update" />
+			        		<input class=" btn btn-warning btn-block text-center" action="update.php" type="submit" name="update_product" value="Update" />
 			      		</div>
 			      	</div>
 			    </div>
@@ -157,8 +204,70 @@ function updateAdmin($database,$idname, $id ){
 
 
 		';
+	}
 
+	if($database == 'category') {
 
+		$data_id = $data['cat_id'];
+		$data_name = $data['cat_name'];
+
+		echo '
+			<form class="form-horizontal" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+			      	<label class="control-label col-sm-2">ID:</label>
+			      	<div class="col-sm-1">
+			        	<input type="text" class="form-control"  value="'.$data_id.'" name="cat_id" readOnly="true">
+			      	</div>
+			      	
+			      	<label class="control-label col-sm-2">Category name:</label>
+			      	<div class="col-sm-5">
+			        	<input type="text" class="form-control" value="'.$data_name.'" name="cat_name" required>
+			      	</div>
+			      	
+			    </div>
+			    <div class="form-group">
+			    	<div class="row">
+			    		<div class="col-sm-2"></div>
+			      		<div class="col-sm-8">
+			        		<input class=" btn btn-warning btn-block text-center" action="update.php" type="submit" name="update_category" value="Update" />
+			      		</div>
+			      	</div>
+			    </div>
+		 	</form>
+
+		';
+	}
+
+	if($database == 'brands') {
+
+		$data_id = $data['brand_id'];
+		$data_name = $data['brand_name'];
+
+		echo '
+			<form class="form-horizontal" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+			      	<label class="control-label col-sm-2">ID:</label>
+			      	<div class="col-sm-1">
+			        	<input type="text" class="form-control"  value="'.$data_id.'" name="brand_id" readOnly="true">
+			      	</div>
+			      	
+			      	<label class="control-label col-sm-2">Category name:</label>
+			      	<div class="col-sm-5">
+			        	<input type="text" class="form-control" value="'.$data_name.'" name="brand_name" required>
+			      	</div>
+			      	
+			    </div>
+			    <div class="form-group">
+			    	<div class="row">
+			    		<div class="col-sm-2"></div>
+			      		<div class="col-sm-8">
+			        		<input class=" btn btn-warning btn-block text-center" action="update.php" type="submit" name="update_brand" value="Update" />
+			      		</div>
+			      	</div>
+			    </div>
+		 	</form>
+
+		';
 	}
 
 
@@ -447,6 +556,31 @@ function update($switcher){
 		returnAlert("You have sucessfully updated product!", $sql); //vlastne tu aj posiela sqlku do databazy
 		
 	}
+
+	if($switcher=="2"){
+		$cat_id = $_POST['cat_id'];
+		$cat_name = $_POST['cat_name'];
+		// echo $pro_id;
+
+		$sql = "UPDATE category SET cat_name = '$cat_name' WHERE cat_id= '$cat_id' ;";
+		// echo $sql;
+
+		returnAlert("You have sucessfully updated category!", $sql); //vlastne tu aj posiela sqlku do databazy
+		
+	}
+
+	if($switcher=="3"){
+		$brand_id = $_POST['brand_id'];
+		$brand_name = $_POST['brand_name'];
+		// echo $pro_id;
+
+		$sql = "UPDATE brands SET brand_name = '$brand_name' WHERE brand_id= '$brand_id' ;";
+
+		returnAlert("You have sucessfully updated category!", $sql); //vlastne tu aj posiela sqlku do databazy
+		
+	}
+
+
 }
 
 ?>

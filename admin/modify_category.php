@@ -1,3 +1,7 @@
+<?php 
+  include("../functions/functions.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +25,7 @@
         <div class="col-md-3">
         <?php include ("admin_sidebar.php"); ?>
         </div>
+
         <div class="col-md-8">
             <div class="panel panel-primary">
                 <div class="panel panel-heading text-center"><h4>Modify category in database</h4></div>
@@ -28,25 +33,16 @@
                   <table class="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th>Category name</th>
-                        <th>Num. of products</th>
+                        <th>Category ID</th>
+                        <th>Name</th>
                         <th>Edit</th>
                         <th>Delete</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
-                        <td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
-                        <td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
-                      </tr>
+                    <?php  
+                        adminCategory('category');
+                    ?>
                     </tbody>
                   </table>
                 </div>
