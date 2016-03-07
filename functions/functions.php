@@ -34,17 +34,137 @@ function adminProducts($category_id){
 				<td>'.$data_brand.'</td>
 				<td>'.$data_price.' €</td>
 				<td><img src="product_images/'.$data_image.'" class="imageClip" /></td>
-				<td><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
+				<td><a href="update.php?id='.$data_id.'&db=products&idname=pro_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
 				<td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
              </tr>';
+	}
+}
 
 
+function updateAdmin($database,$idname, $id ){
+	global $con;
+	$sql = 'SELECT * FROM '.$database.' WHERE '.$idname.'="'.$id.'"';
+	// echo $sql;
+	$run_sql = mysqli_query($con, $sql);
+	$data = mysqli_fetch_array($run_sql);
+
+
+
+	if($database == 'products') {
+		$data_id = $data['pro_id'];
+		$data_category = $data['pro_category'];
+		$data_brand = $data['pro_brand'];
+		$data_name = $data['pro_name'];
+		$data_price = $data['pro_price'];
+		$data_desc = $data['pro_desc'];
+		$data_keywords = $data['pro_keywords'];
+		$data_image = $data['pro_image'];
+
+		$sql = 'SELECT * FROM category WHERE cat_id='.$data_category.'';
+		$run_sql = mysqli_query($con, $sql);
+		$data = mysqli_fetch_array($run_sql);
+		$category_name = $data['cat_name'];
+
+		$sql = 'SELECT * FROM brands WHERE brand_id='.$data_brand.'';
+		// echo $sql;
+		$run_sql = mysqli_query($con, $sql);
+		$data = mysqli_fetch_array($run_sql);
+		$brand = $data['brand_name'];
+
+
+		echo '
+			
+			<form class="form-horizontal" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+			      	<label class="control-label col-sm-2">ID:</label>
+			      	<div class="col-sm-1">
+			        	<input type="text" class="form-control"  value="'.$data_id.'" name="pro_id" readOnly="true">
+			      	</div>
+			      	
+			      	<label class="control-label col-sm-2">Product name:</label>
+			      	<div class="col-sm-5">
+			        	<input type="text" class="form-control" value="'.$data_name.'" name="pro_name" required>
+			      	</div>
+			      	
+			    </div>
+
+			    <div class="form-group">
+			    	<label class="control-label col-sm-2">Category:</label>
+			      	<div class="col-sm-8">
+			        	<select class="form-control" name="pro_cat">
+			        	<option value="'.$data_category.'" selected="selected">'.$category_name.'</option>
+			        	<option disabled>──────────</option>
+			        	';
+			        	listData(category, cat_name, cat_id);
+			    echo '
+			        	
+						</select>
+			      	</div>
+			    </div>
+
+			    <div class="form-group">
+			      	<label class="control-label col-sm-2">Brand:</label>
+			      	<div class="col-sm-8">
+			        	<select class="form-control" name="pro_brand" required>
+			        	<option value="'.$data_brand.'" selected="selected">'.$brand.'</option>
+			        	<option disabled>──────────</option>
+			     ';
+			        		listData(brands, brand_name, brand_id);
+			     echo '
+						</select>
+			      	</div>
+			    </div>
+
+			    <div class="form-group">
+				        <label class="control-label col-sm-2">Price (with tax):</label>
+				        <div class="col-sm-8">
+				            <input type="number" value="'.$data_price.'" class="form-control" min="0" step="1" name="pro_price" required>
+				        </div>
+		    	</div>
+
+		    	<div class="form-group">
+				        <label class="control-label col-sm-2">Image:</label>
+				        <div class="col-sm-8">
+				        	<img src="product_images/'.$data_image.'" style="max-width: 150px; heigh: auto;">
+				        </div>
+		    	</div>
+
+			    <div class="form-group">
+			    	<label class="control-label col-sm-2">Description:</label>
+			      	<div class="col-sm-8">
+			      		<textarea class = "form-control" rows = "7" name="pro_desc">'.$data_desc.'</textarea>
+			      	</div>
+			    </div>
+
+			    <div class="form-group">
+			      	<label class="control-label col-sm-2">Keywords:</label>
+			      	<div class="col-sm-8">
+			        	<input type="text" class="form-control" value="'.$data_keywords.'" name="pro_keywords"/>
+			      	</div>
+			    </div>
+
+			    <div class="form-group">
+			    	<div class="row">
+			    		<div class="col-sm-2"></div>
+			      		<div class="col-sm-8">
+			        		<input class=" btn btn-warning btn-block text-center" action="update.php" type="submit" name="update" value="Update" />
+			      		</div>
+			      	</div>
+			    </div>
+
+		 </form>
+
+
+
+		';
 
 
 	}
 
 
 }
+
+
 
 
 //VYPISE IBA NAZVY DAT V TABULKE
@@ -305,6 +425,28 @@ function insert($switcher){
 
 		
 
+}
+
+
+function update($switcher){
+	global $con;
+
+	if($switcher=="1"){
+		$pro_id = $_POST['pro_id'];
+		$pro_name = $_POST['pro_name'];
+		$pro_cat = $_POST['pro_cat'];
+		$pro_brand = $_POST['pro_brand'];
+		$pro_price = $_POST['pro_price'];
+		$pro_desc = $_POST['pro_desc'];
+		$pro_keywords = $_POST['pro_keywords'];
+		// echo $pro_id;
+
+		$sql = "UPDATE products SET pro_name = '$pro_name', pro_category = '$pro_cat', pro_brand='$pro_brand', pro_price='$pro_price', pro_desc='$pro_desc', pro_keywords='$pro_keywords' WHERE pro_id='$pro_id';";
+		// echo $sql;
+
+		returnAlert("You have sucessfully updated product!", $sql); //vlastne tu aj posiela sqlku do databazy
+		
+	}
 }
 
 ?>
