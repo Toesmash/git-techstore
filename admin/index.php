@@ -1,3 +1,19 @@
+<?php  
+	include("../functions/functions.php");
+    $id;
+    $db;
+    $name_of_id;
+    $status;
+
+	if(isset($_GET['id']) && isset($_GET['db']) && isset($_GET['idname']) && isset($_GET['delete'])){
+	    $id = mysql_real_escape_string($_GET['id']);
+	    $db = mysql_real_escape_string($_GET['db']);
+		$name_of_id = mysql_real_escape_string($_GET['idname']);
+
+		deleteAdmin($db,$name_of_id, $id);
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

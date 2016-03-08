@@ -14,84 +14,157 @@ function getRows($selector, $database){
 
 }
 
-//ZOBRAZI VSETKY PRODUKTY
-function adminProducts($category_id){
+
+function adminFetchTable($id, $database, $separator){
 	global $con;
-	$sql = 'SELECT products.pro_id, products.pro_name, brands.brand_name, products.pro_price, products.pro_image FROM products JOIN brands ON pro_brand = brand_id WHERE pro_category = '.$category_id.'';
 
-	$run_data = mysqli_query($con, $sql);
+	if($database=='products'){
+		if($separator==0){
+			$sql = 'SELECT products.pro_id, products.pro_name, brands.brand_name, products.pro_price, products.pro_image FROM products JOIN brands ON pro_brand = brand_id WHERE pro_category = '.$id.'';
+		}
+		else {
+			$sql = 'SELECT products.pro_id, products.pro_name, brands.brand_name, products.pro_price, products.pro_image FROM products JOIN brands ON pro_brand = brand_id WHERE pro_category = '.$id.' AND pro_id='.$separator.'';
 
-	while ($data = mysqli_fetch_array($run_data)){
-		$data_id = $data['pro_id'];
-		$data_name = $data['pro_name'];
-		$data_brand = $data['brand_name'];	
-		$data_price = $data['pro_price'];
-		$data_image = $data['pro_image'];
+		}
+		
+		$run_data = mysqli_query($con, $sql);
 
-		echo '<tr>
-				<td scope="row">'.$data_id.'</td>
-				<td>'.$data_name.'</td>
-				<td>'.$data_brand.'</td>
-				<td>'.$data_price.' €</td>
-				<td><img src="product_images/'.$data_image.'" class="imageClip" /></td>
-				<td><a href="update.php?id='.$data_id.'&db=products&idname=pro_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
-				<td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
-             </tr>';
-	}
-}
-
-function adminBrands($database){
-	global $con;
-	$sql = 'SELECT * FROM '.$database.'';
-
-	$run_data = mysqli_query($con, $sql);
-
-
-	if($database=='brands'){
 		while ($data = mysqli_fetch_array($run_data)){
-		$data_id = $data['brand_id'];
-		$data_name = $data['brand_name'];
-		echo '<tr>
-				<td scope="row">'.$data_id.'</td>
-				<td>'.$data_name.'</td>
-				<td><a href="update.php?id='.$data_id.'&db=brands&idname=brand_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
-				<td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
-             </tr>';
+			$data_id = $data['pro_id'];
+			$data_name = $data['pro_name'];
+			$data_brand = $data['brand_name'];	
+			$data_price = $data['pro_price'];
+			$data_image = $data['pro_image'];
+
+			echo '<tr>
+					<td scope="row">'.$data_id.'</td>
+					<td>'.$data_name.'</td>
+					<td>'.$data_brand.'</td>
+					<td>'.$data_price.' €</td>
+					<td><img src="product_images/'.$data_image.'" class="imageClip" /></td>
+					';
+			if($separator==0){
+				echo'
+					<td><a href="update.php?id='.$data_id.'&db=products&idname=pro_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
+					<td><a href="delete.php?id='.$data_id.'&db=products&idname=pro_id&category_id='.$id.'&action=deleteproduct" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
+				';
+			}
+			else {
+				echo '
+					<td>
+						<a href="index.php?id='.$data_id.'&db=products&idname=pro_id&category_id='.$id.'&action=deleteproduct&delete=true" class="btn btn-danger btn-lg">YES</a>
+					</td>
+					<td>
+						<a href="modify.php?action=changeproduct" class="btn btn-primary btn-lg">NO</a>
+					</td>
+
+					';
+
+			}
+					
+	        echo '
+	        	</tr>
+	        ';
+		}
 	}
+	else if($database=='category'){
+		if($separator==0){
+			$sql = 'SELECT * FROM category';
+		}
+		else{
+			$sql = 'SELECT * FROM category WHERE cat_id='.$separator.'';
 
-	}
+		}
 
-}
+		$run_data = mysqli_query($con, $sql);
 
-function adminCategory($database){
-	global $con;
-	$sql = 'SELECT * FROM '.$database.'';
-
-	$run_data = mysqli_query($con, $sql);
-
-
-	if($database=='category'){
 		while ($data = mysqli_fetch_array($run_data)){
-		$data_id = $data['cat_id'];
-		$data_name = $data['cat_name'];
-		echo '<tr>
-				<td scope="row">'.$data_id.'</td>
-				<td>'.$data_name.'</td>
-				<td><a href="update.php?id='.$data_id.'&db=category&idname=cat_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
-				<td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
-             </tr>';
+			$data_id = $data['cat_id'];
+			$data_name = $data['cat_name'];
+			echo '
+				<tr>
+					<td scope="row">'.$data_id.'</td>
+					<td>'.$data_name.'</td>
+				';
+			if($separator==0){
+				echo'
+					<td><a href="update.php?id='.$data_id.'&db=category&idname=cat_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
+					<td><a href="delete.php?id='.$data_id.'&db=category&idname=cat_id&action=deletecategory" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
+					';
+			}
+			else {
+				echo '
+					<td>
+						<a href="index.php?id='.$data_id.'&db=category&idname=cat_id&action=deletecategory&delete=true" class="btn btn-danger btn-lg">YES</a>
+						<a href="modify.php?action=changecategory" class="btn btn-primary btn-lg">NO</a>
+					</td>
+
+					';
+
+			}
+					
+	        echo '
+	        	</tr>
+	        ';
+		}
 	}
 
-	}
-	
+	else if($database=='brands'){
+		if($separator==0){
+			$sql = 'SELECT * FROM brands';
+		}
+		else{
+			$sql = 'SELECT * FROM brands WHERE brand_id='.$separator.'';
 
+		}
+
+		$run_data = mysqli_query($con, $sql);
+
+		while ($data = mysqli_fetch_array($run_data)){
+			$data_id = $data['brand_id'];
+			$data_name = $data['brand_name'];
+			echo '
+				<tr>
+					<td scope="row">'.$data_id.'</td>
+					<td>'.$data_name.'</td>
+				';
+			if($separator==0){
+				echo'
+					<td><a href="update.php?id='.$data_id.'&db=brands&idname=brand_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
+					<td><a href="delete.php?id='.$data_id.'&db=brands&idname=brand_id&action=deletebrand" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
+	            ';
+			}
+			else {
+				echo '
+					<td>
+						<a href="index.php?id='.$data_id.'&db=brands&idname=brand_id&action=deletebrand&delete=true" class="btn btn-danger btn-lg">YES</a>
+						<a href="modify.php?action=changebrand" class="btn btn-primary btn-lg">NO</a>
+					</td>
+
+					';
+
+			}
+					
+	        echo '
+	        	</tr>
+	        ';
+
+		}
+	}
 }
 
+function deleteAdmin($database,$idname, $id ){
+	global $con;
+	$sql = 'DELETE FROM '.$database.' WHERE '.$idname.'="'.$id.'"';
+	// echo $sql;
+	returnAlert("You have succesfully removed a record from database!", $sql);
+
+}
 
 function updateAdmin($database,$idname, $id ){
 	global $con;
 	$sql = 'SELECT * FROM '.$database.' WHERE '.$idname.'="'.$id.'"';
-	// echo $sql;
+
 	$run_sql = mysqli_query($con, $sql);
 	$data = mysqli_fetch_array($run_sql);
 
@@ -382,6 +455,19 @@ function getProducts($query){
 
 		$sql = $query;
 		$run_pro = mysqli_query($con, $sql);
+		$rowcount=mysqli_num_rows($run_pro);
+
+		if($rowcount==0){
+			echo '
+				<div class="alert alert-info">
+					<a class="close" data-dismiss="alert" aria-label="Close">&#215;</a>
+				  	<strong>Info!</strong> No results found for your search.
+				</div>
+
+			';
+
+		}
+
 
 		while ($row_products = mysqli_fetch_array($run_pro)) {
 			$product_id = $row_products['pro_id'];
@@ -458,10 +544,10 @@ function returnAlert($string, $sql){
 			</div>
 			<script>
 				window.setTimeout(function() {
-					$(".alert").fadeTo(500, 0).slideUp(500, function(){
+					$(".alert").fadeTo(600, 0).slideUp(200, function(){
     					$(this).remove(); 
     				});
-			}, 5000);
+			}, 2000);
 
 			</script>
 		';

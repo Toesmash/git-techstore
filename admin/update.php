@@ -49,17 +49,10 @@
 			<?php include ("admin_sidebar.php"); ?>
 		</div>
 		<div class="col-md-8">
-			<div class="page-header"><h1>Update product in database!</h1></div>
+			<div class="page-header"><h1>Update record in database!</h1></div>
 			<?php  
-				if ($name_of_id == 'pro_id'){
-					updateAdmin($db,$name_of_id, $id);
-				}
-				else if($name_of_id == 'cat_id') {
-					updateAdmin($db, $name_of_id, $id);
-				}
-				else if($name_of_id == 'brand_id') {
-					updateAdmin($db, $name_of_id, $id);
-				}
+				// kedze tu sa to lisi len v $name_of_id tak nemusim ani if-else statementy davat.
+				updateAdmin($db,$name_of_id, $id);
 			?>
 			
 		</div>

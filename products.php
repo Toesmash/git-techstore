@@ -72,7 +72,14 @@
 				getProducts("SELECT * FROM products WHERE pro_category");
 			}
 
+			else if(isset($_GET['key'])){
+				$keywords = $_GET['key'];
+				getProducts('SELECT * FROM products WHERE pro_keywords LIKE "%'.$keywords.'%"');
+			}
+
 			else {
+					var_dump($_GET);
+					var_dump($_POST);
 					echo '<h1>You are not supposed to be here. A skillful monkey is working on fixing this "feature", so that this could not happen again. And go away now! Quickly</h1>';	
 			}
 
