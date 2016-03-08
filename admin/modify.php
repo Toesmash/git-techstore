@@ -75,11 +75,12 @@
                   <table class="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th>Product ID</th>
+                        
                         <th>Name</th>
                         <th>Brand</th>
                         <th>Price</th>
                         <th>Image</th>
+                        <th>Keywords</th>
                         <th>Edit</th>
                         <th>Delete</th>
                       </tr>

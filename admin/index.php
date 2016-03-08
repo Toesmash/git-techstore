@@ -1,9 +1,28 @@
-<?php  
+<?php 
+	session_start();
 	include("../functions/functions.php");
-    $id;
-    $db;
-    $name_of_id;
-    $status;
+
+	if(isset($_SESSION['name']) && isset($_SESSION['psswrd'])){
+		$sql = 'SELECT * FROM accounts WHERE acc_email = "'.$_SESSION['name'].'"  AND acc_psswrd = "'.$_SESSION['psswrd'].'"';
+
+		if ($run_data = mysqli_query($con, $sql)){
+			if(mysqli_num_rows($run_data)==1){
+
+			}
+		}
+		else {
+			header('Location: ../index.php');
+		}
+
+	}
+	else{
+		// echo $sql;
+		header('Location: ../index.php');
+	}
+
+
+
+    $id = $db = $name_of_id = $status = '';
 
 	if(isset($_GET['id']) && isset($_GET['db']) && isset($_GET['idname']) && isset($_GET['delete'])){
 	    $id = mysql_real_escape_string($_GET['id']);
@@ -38,7 +57,11 @@
 			<?php include ("admin_sidebar.php"); ?>
 		</div>
 		<div class="col-md-8">
-			
+			<?php 
+
+				echo $_SESSION['name'];
+
+			?>
 
 		</div>
 	</div>

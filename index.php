@@ -1,5 +1,8 @@
 <?php 
+  session_start();
 
+
+  
   $alert_error = '';
   if(isset($_GET['login_error'])){
     if($_GET['login_error']=='empty_submit'){

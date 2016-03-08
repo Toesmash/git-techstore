@@ -9,7 +9,7 @@
             <li class="active"><a href="../index.php">Live site</a>
           </ul>
           <ul class="nav navbar-nav" style="float: right">
-            <li><a id="sign_in_affix" href="javascript:;" class="navbar-nav pull-right">Sign in</a></li>
+            <li><a href="../accounts/logout.php" class="navbar-nav pull-right" style="color: red;"><i class="glyphicon glyphicon-off"></i> Log out</a></li>
           </ul>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <?php 
-
-	include ('../functions/functions.php');
 	session_start();
+	include ('../functions/functions.php');
+
 	if(isset($_POST['login_run'])){
 		if(!empty($_POST['username']) && !empty($_POST['password'])){
 			$get_username = mysqli_real_escape_string($con, $_POST['username']);
@@ -12,6 +12,8 @@
 			
 			if($handshake = mysqli_query($con, $sql)) {
 				if( mysqli_num_rows($handshake) == 1) {
+					$_SESSION['name']=$get_username;
+					$_SESSION['psswrd']=$get_password;
 					header('Location: ../admin/index.php'); 
 				}
 
