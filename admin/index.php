@@ -6,17 +6,25 @@
 		$sql = 'SELECT * FROM accounts WHERE acc_email = "'.$_SESSION['name'].'"  AND acc_psswrd = "'.$_SESSION['psswrd'].'"';
 
 		if ($run_data = mysqli_query($con, $sql)){
-			if(mysqli_num_rows($run_data)==1){
+			$data = mysqli_fetch_assoc($run_data);
 
+			if(mysqli_num_rows($run_data)==1){
+				if($data['acc_role']=='admin'){
+					// LOGGED IN AS ADMIN
+				}
+				else {
+					header('Location: ../index.php');
+				}
+			}
+			else {
+					header('Location: ../index.php');
 			}
 		}
 		else {
 			header('Location: ../index.php');
 		}
-
 	}
-	else{
-		// echo $sql;
+	else {
 		header('Location: ../index.php');
 	}
 
@@ -60,6 +68,11 @@
 			<?php 
 
 				echo $_SESSION['name'];
+				echo '<br>';
+				echo $_SESSION['psswrd'];
+				echo '<br>';
+				echo $_SESSION['account_role'];
+				echo '<br>';
 
 			?>
 

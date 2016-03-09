@@ -1,24 +1,52 @@
 <?php 
-  include("../functions/functions.php");
-    $category_id = -1;
-    $status;
+    session_start();
+    include("../functions/functions.php");
 
-  if($_GET['action'] =='changeproduct'){
+    if(isset($_SESSION['name']) && isset($_SESSION['psswrd'])){
+      $sql = 'SELECT * FROM accounts WHERE acc_email = "'.$_SESSION['name'].'"  AND acc_psswrd = "'.$_SESSION['psswrd'].'"';
 
-    $status=1;
-  }
+      if ($run_data = mysqli_query($con, $sql)){
+        $data = mysqli_fetch_assoc($run_data);
 
-  else if($_GET['action']=='changecategory'){
-    $status=2;
-  }
+        if(mysqli_num_rows($run_data)==1){
+          if($data['acc_role']=='admin'){
+            
+          }
+          else {
+            header('Location: ../index.php');
+          }
+        }
+        else {
+            header('Location: ../index.php');
+        }
+      }
+      else {
+        header('Location: ../index.php');
+      }
+    }
+    else {
+      header('Location: ../index.php');
+    }
+    
+      $category_id = -1;
+      $status;
 
-  else if($_GET['action']=='changebrand'){
-    $status=3;
-  }
+    if($_GET['action'] =='changeproduct'){
 
-  if(isset($_POST['ctgry'])){
-    $category_id = $_POST['ctgry_id'];
-  }
+      $status=1;
+    }
+
+    else if($_GET['action']=='changecategory'){
+      $status=2;
+    }
+
+    else if($_GET['action']=='changebrand'){
+      $status=3;
+    }
+
+    if(isset($_POST['ctgry'])){
+      $category_id = $_POST['ctgry_id'];
+    }
 
  ?>
 

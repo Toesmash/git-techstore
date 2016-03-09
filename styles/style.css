@@ -10,8 +10,8 @@ padding-top: 52px;
 }
 
 nav {
-    padding-top: 4px;
-    max-width: 1000px;
+    /*padding-top: 4px;*/
+    /*max-width: 1000px;*/
     margin: 0 auto;
 }
 
@@ -35,8 +35,8 @@ nav {
 /*--------------------------------------------NAVBAR*/
 
 .navbar-brand {
-    margin-right: 50px;
-    margin-top: -2px;
+    /*margin-right: 50px;
+    margin-top: -2px;*/
 }
 
 .navbar-header {
@@ -44,24 +44,24 @@ nav {
 }
 
 
-#my-navbar.navbar-default {
-    font-size: 14px;
+#my-navbar {
+    /*font-size: 14px;*/
     border-bottom-width: 1px;
-    padding-bottom: 2px;
+    background-color: #185C85;
 }
 
-#my-navbar.navbar-default .navbar-nav>li>a:hover{
-    color: white;
-    background-color: rgba(16, 138, 209, 1);
-    border-radius: 5px;
+#my-navbar .navbar-nav>li>a:hover{
+    color: #3498db;
+    background-color: #1E2A36;
+    /*border-radius: 5px;*/
 
 }
 
-#my-navbar.navbar-default .navbar-nav>li {
+#my-navbar .navbar-nav>li {
     margin-left: 20px;
 }
 
-#my-navbar.navbar-default .navbar-nav>li:first-child {
+#my-navbar .navbar-nav>li:first-child {
     margin-left: 30px;
 }
 
@@ -255,10 +255,7 @@ height: 150px;
 
 
 /*-----------------------------------------REGISTRATION--*/
-.reg_jumb {
 
-    padding: 0px;
-}
 
 .control-label {
     padding-right: 20px;
@@ -284,6 +281,6 @@ height: 150px;
 /*.control-label, .jumbotron, .product_price, .product_image, .product_title,.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,  .col-md-7,  
 .col-md-8,  .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     border: 1px solid darkgrey;
-}
-*/
+}*/
+
 

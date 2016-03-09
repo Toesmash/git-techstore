@@ -10,13 +10,20 @@
 			$sql = 'SELECT * FROM accounts WHERE acc_email="'.$get_username.'" AND acc_psswrd="'.$get_password.'"';
 			echo $sql;
 			
+
+
+			
 			if($handshake = mysqli_query($con, $sql)) {
 				if( mysqli_num_rows($handshake) == 1) {
+					$data = mysqli_fetch_assoc($handshake);
+
 					$_SESSION['name']=$get_username;
 					$_SESSION['psswrd']=$get_password;
+					$_SESSION['account_role']=$data['acc_role'];
+					
 					header('Location: ../admin/index.php'); 
+					
 				}
-
 				else {
 					header('Location: ../index.php?login_error=wrong_submit');
 				}
@@ -44,6 +51,6 @@
 	<title>BLA</title>
 </head>
 <body>
-<h1>BLA</h1>
+<!-- <h1>BLA</h1> -->
 </body>
 </html>

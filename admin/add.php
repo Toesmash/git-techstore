@@ -1,6 +1,33 @@
-<!DOCTYPE html>
 <?php 
+	session_start();
 	include("../functions/functions.php");
+
+	if(isset($_SESSION['name']) && isset($_SESSION['psswrd'])){
+		$sql = 'SELECT * FROM accounts WHERE acc_email = "'.$_SESSION['name'].'"  AND acc_psswrd = "'.$_SESSION['psswrd'].'"';
+
+		if ($run_data = mysqli_query($con, $sql)){
+			$data = mysqli_fetch_assoc($run_data);
+
+			if(mysqli_num_rows($run_data)==1){
+				if($data['acc_role']=='admin'){
+					
+				}
+				else {
+					header('Location: ../index.php');
+				}
+			}
+			else {
+					header('Location: ../index.php');
+			}
+		}
+		else {
+			header('Location: ../index.php');
+		}
+	}
+	else {
+		header('Location: ../index.php');
+	}
+
 	$status;
 	
 	if($_GET['action'] =='addproduct'){
@@ -27,6 +54,7 @@
 	}
 
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset='utf-8'>

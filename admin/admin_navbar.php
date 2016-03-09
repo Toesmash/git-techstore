@@ -6,7 +6,7 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="../index.php">Live site</a>
+            <li class="active"><a href="../accounts/logout.php">Live site</a>
           </ul>
           <ul class="nav navbar-nav" style="float: right">
             <li><a href="../accounts/logout.php" class="navbar-nav pull-right" style="color: red;"><i class="glyphicon glyphicon-off"></i> Log out</a></li>

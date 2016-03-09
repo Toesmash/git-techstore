@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-
 <?php 
+	session_start();
 	include("functions/functions.php");
 ?>
+
+<!DOCTYPE html>
+
 
 <html>
 <head>
@@ -21,7 +23,16 @@
 <body>
 <div class="container-fluid">
 	<!-- NAVBAR -->
-    <?php include ("navbar.php"); ?>
+    <?php include ("navbar.php");
+    
+    	echo $_SESSION['name'];
+        echo '<br>';
+        echo $_SESSION['psswrd'];
+        echo '<br>';
+        echo $_SESSION['account_role'];
+        echo '<br>';
+
+    ?>
     
 	<header>
 		<div class="jumbotron">

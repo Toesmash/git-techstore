@@ -1,4 +1,4 @@
-<div class="col-md-3 col-md-push-8 text-center" id="sign_in_div">
+<div class="col-md-3 col-md-push-9 text-center" id="sign_in_div">
   <form class="sign_up_form" role="form" method="post" action="accounts/login.php">
 
   <div class="row">

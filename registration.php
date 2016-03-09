@@ -3,10 +3,8 @@
   include("functions/functions.php");
 
   if(isset($_POST['reg_submit'])){
-    // echo'<h1>DOSTAL SA DO IFU</h1>';
 
     if($_POST['reg_psswrd'] == $_POST['reg_psswrdchck']){
-      // echo'<h1>HESLA MATCHUJU</h1>';
       insert("4");
     }
     else {

@@ -615,8 +615,8 @@ function insert($switcher){
 			$psc = $_POST['reg_psc'];
 			$timestamp = date('Y-m-d H:i:s');
 
-			$sql = "INSERT INTO accounts (acc_username, acc_name, acc_surname, acc_email, acc_psswrd, acc_phone, acc_city, acc_country, acc_street, acc_psc, acc_opendate) VALUES ('$username', '$name','$surname','$email','$password','$phone','$city','$country','$street','$psc','$timestamp')";
-			// print_r($sql);
+			$sql = "INSERT INTO accounts (acc_role, acc_username, acc_name, acc_surname, acc_email, acc_psswrd, acc_phone, acc_city, acc_country, acc_street, acc_psc, acc_opendate) VALUES ('user','$username', '$name','$surname','$email','$password','$phone','$city','$country','$street','$psc','$timestamp')";
+
 			returnAlert("You have sucessfully created an account!", $sql); //vlastne tu aj posiela sqlku do databazy
 		}
 

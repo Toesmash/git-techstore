@@ -62,6 +62,13 @@
     <?php include ("navbar.php"); ?>
     <?php 
       echo $alert_error;
+      echo $_SESSION['name'];
+      echo '<br>';
+      echo $_SESSION['psswrd'];
+      echo '<br>';
+      echo $_SESSION['account_role'];
+      echo '<br>';
+
     ?>
 
 
