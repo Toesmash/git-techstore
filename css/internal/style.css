@@ -1,68 +1,30 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import "login_style.css";
+@import "navbar_style.css";
 
 /*--------------------------------------------STRUKTURA*/
 
+html {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
 body{
-/*background-color: lightgrey;*/
-font-family: 'Open Sans', sans-serif;
-padding-top: 52px;
+    padding-top: 60px;
 }
 
-nav {
-    /*padding-top: 4px;*/
-    /*max-width: 1000px;*/
-    margin: 0 auto;
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
 }
-
 
 .container-fluid {
-    margin: 0 auto;
     max-width: 1000px;
     /*background-color: lightblue;*/
     /*border: 1px dashed navy;*/
 
-}
-
-
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
-}
-
-
-
-/*--------------------------------------------NAVBAR*/
-
-.navbar-brand {
-    /*margin-right: 50px;
-    margin-top: -2px;*/
-}
-
-.navbar-header {
-    width: 100px;
-}
-
-
-#my-navbar {
-    /*font-size: 14px;*/
-    border-bottom-width: 1px;
-    background-color: #185C85;
-}
-
-#my-navbar .navbar-nav>li>a:hover{
-    color: #3498db;
-    background-color: #1E2A36;
-    /*border-radius: 5px;*/
-
-}
-
-#my-navbar .navbar-nav>li {
-    margin-left: 20px;
-}
-
-#my-navbar .navbar-nav>li:first-child {
-    margin-left: 30px;
 }
 
 
@@ -79,7 +41,7 @@ nav {
     height: 80px;
 }
 
-.glyphicon-shopping-cart{
+#header .glyphicon-shopping-cart{
     font-size: 5em;
     color: #108ad1;
 }
@@ -90,11 +52,6 @@ nav {
     text-align: middle;*/
     margin-right: 30px;
     max-height: 150px !important;
-
-}
-
-.navbar-form {
-padding-top: 20px;
 
 }
 

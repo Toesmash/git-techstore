@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	include ('../functions/functions.php');
+	include ('../php/functions.php');
 
 	if(isset($_POST['login_run'])){
 		if(!empty($_POST['username']) && !empty($_POST['password'])){

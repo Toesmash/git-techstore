@@ -26,7 +26,7 @@ function adminFetchTable($id, $database, $separator){
 			$sql = 'SELECT products.pro_id, products.pro_name, brands.brand_name, products.pro_price, products.pro_image FROM products JOIN brands ON pro_brand = brand_id WHERE pro_category = '.$id.' AND pro_id='.$separator.'';
 
 		}
-		
+		echo $sql;
 		$run_data = mysqli_query($con, $sql);
 
 		while ($data = mysqli_fetch_array($run_data)){
@@ -38,7 +38,7 @@ function adminFetchTable($id, $database, $separator){
 			$data_keywords = $data['pro_keywords'];
 
 			echo '<tr>
-					
+					<td>'.$data_id.'</td>
 					<td>'.$data_name.'</td>
 					<td>'.$data_brand.'</td>
 					<td>'.$data_price.' €</td>

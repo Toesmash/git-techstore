@@ -1,7 +1,5 @@
 <?php 
   session_start();
-
-
   
   $alert_error = '';
   if(isset($_GET['login_error'])){
@@ -45,29 +43,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='utf-8'>
-	<title>TECHstore</title>
-	<meta name="description" content="TECHstore"> 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  	<meta charset='utf-8'>
+  	<title>TECHstore</title>
+  	<meta name="description" content="TECHstore">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-	<link rel="stylesheet" href="styles/style.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  	<link rel="stylesheet" href="css/internal/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
 </head>
 <body>
+  <?php include ("navbar.php"); ?>
   <div class="container-fluid">
-    <?php include ("navbar.php"); ?>
+    
     <?php 
-      echo $alert_error;
-      echo $_SESSION['name'];
-      echo '<br>';
-      echo $_SESSION['psswrd'];
-      echo '<br>';
-      echo $_SESSION['account_role'];
-      echo '<br>';
+          echo $alert_error;
+      if(!empty($_SESSION)){
+          
+          echo $_SESSION['name'];
+          echo '<br>';
+          echo $_SESSION['psswrd'];
+          echo '<br>';
+          echo $_SESSION['account_role'];
+          echo '<br>';
+      }
 
     ?>
 
@@ -80,7 +81,7 @@
       <div class="col-md-4">
           <img src="img/logo-primary2.svg" class="img-header">
       </div>
-      <div class="col-md-6 nopadding">
+      <div class="col-md-6 ">
         <form  action="products.php" method="get" enctype="multipart/form-data">
           <div class="input-group">
             <input type="text" class="form-control" name="key" placeholder="Vyhladaj produkt">
@@ -94,7 +95,7 @@
 
     <!-- CAROUSEL -->
     <div class="row">
-      <div  class="col-md-12 nopadding">
+      <div  class="col-md-12 ">
         <div class="carousel slide" id="my-carousel">
 
           <ol class="carousel-indicators">
@@ -158,12 +159,6 @@
       </div>
     </div>
 
-
-
-
-
-
-
     <div class="row">
       <div class="col-md-6">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae eros sit amet lacus finibus lacinia non consectetur lectus. In hac habitasse platea dictumst. Ut posuere laoreet malesuada. Pellentesque varius, urna ut lobortis imperdiet, sem massa placerat leo, vel finibus mi mauris vel velit. In porttitor tellus imperdiet dolor pharetra iaculis. Donec auctor eu lorem at viverra. Vestibulum eget purus neque. Donec rutrum iaculis lectus et auctor. Vestibulum quis risus euismod, vestibulum magna quis, tristique justo. Sed quis ligula blandit, scelerisque dui sit amet, hendrerit quam. Nam dignissim dapibus eros non dignissim. Interdum et malesuada fames ac ante ipsum primis in faucibus.
@@ -214,14 +209,10 @@
     </div>
 
 
-   </div> <!--Container -->
+    </div> <!--Container -->
 
-  <script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/internal/script.js"></script>
 </body>
 </html>
-
-
-

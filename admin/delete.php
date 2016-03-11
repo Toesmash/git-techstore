@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  include("../functions/functions.php");
+  include("../php/functions.php");
 
   if(isset($_SESSION['name']) && isset($_SESSION['psswrd'])){
     $sql = 'SELECT * FROM accounts WHERE acc_email = "'.$_SESSION['name'].'"  AND acc_psswrd = "'.$_SESSION['psswrd'].'"';
@@ -60,19 +60,15 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <title>TECHstore - Admin</title>
-    <meta name="description" content="TECHstore"> 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <head>
+      <meta charset='utf-8'>
+      <title>Admin Panel</title>
+      <meta name="description" content="TECHstore">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="styles/admin_style.css">
-    
-
-</head>
+      <link href="../css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/admin_style.css">
+  </head>
 <body>
 
     <!-- NAVBAR -->
@@ -167,6 +163,8 @@
     </div>
 
 
-  <script src="../script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/internal/script.js"></script>
 </body>
 </html>
