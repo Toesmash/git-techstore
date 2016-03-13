@@ -57,20 +57,6 @@
 <body>
   <?php include ("navbar.php"); ?>
   <div class="container-fluid">
-    
-    <?php 
-          echo $alert_error;
-      if(!empty($_SESSION)){
-          
-          echo $_SESSION['name'];
-          echo '<br>';
-          echo $_SESSION['psswrd'];
-          echo '<br>';
-          echo $_SESSION['account_role'];
-          echo '<br>';
-      }
-
-    ?>
 
 
     <!-- HEADER  -->

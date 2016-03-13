@@ -5,8 +5,6 @@
 	border-bottom-color: #3498db;
 }
 
-
-
 .nav.navbar-nav li a > i {
 	font-size: 20px;
 }
@@ -31,10 +29,6 @@
 }
 
 
-.badge {
-  background-color: #F28D27;
-}
-
 .navbar-toggle .icon-bar{
   background-color: #FFF;
 }
@@ -46,21 +40,23 @@
 .navbar-nav>.open>a,
 .navbar-nav>.open>a:focus,
 .navbar-nav>.open>a:hover,
-.dropdown-menu>li>a,
-.badge {
+.navbar-nav>li>p,
+.dropdown-menu>li>a{
   color: #F2F9FF;
 }
 
 
 .navbar-nav>li>a:focus,
 .navbar-nav>li>a:hover {
-	background-color: #134D70 ;
+	background-color: #13304D ;
   	color: #40DEBF;
 }
 
-
-
-
+.navbar-nav > li > p {
+	padding: 0 10px;
+	margin-top: 18px;
+	cursor:default;
+}
 .navbar {
 	border: none;
 	min-height: 60px;

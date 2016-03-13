@@ -69,6 +69,10 @@
 				echo '<br>';
 				echo $_SESSION['account_role'];
 				echo '<br>';
+				echo $_SESSION['nick'];
+				echo '<br>';
+				echo $_SESSION['account_id'];
+				echo '<br>';
 
 			?>
 

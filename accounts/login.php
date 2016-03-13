@@ -20,6 +20,9 @@
 					$_SESSION['name']=$get_username;
 					$_SESSION['psswrd']=$get_password;
 					$_SESSION['account_role']=$data['acc_role'];
+					$_SESSION['nick']=$data['acc_username'];
+					$_SESSION['account_id']=$data['acc_id'];
+
 					
 					header('Location: ../admin/index.php'); 
 					

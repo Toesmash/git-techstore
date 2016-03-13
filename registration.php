@@ -115,24 +115,29 @@
 
            <!-- CITY -->
           <div class="form-group">
-            <label class="control-label col-sm-4" for="fcity">City:</label>
+             <label class="control-label col-sm-4" for="fstreet">Street:</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="fcity" placeholder="Enter city" name="reg_city">
+              <input type="text" class="form-control" id="fstreet" placeholder="Enter street name" name="reg_street">
             </div>
+
+
+            <!-- PSC -->
+              <label class="control-label col-sm-2" for="fhousenmbr">House number:</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="fhousenmbr" type="text" placeholder="Enter house number" name="reg_housenmbr">
+              </div>
+
+            
         
-          <!-- COUNTRY -->
-            <label class="control-label col-sm-2" for="disabledTextInput">Country:</label>
-            <div class="col-sm-3">
-              <input class="form-control" id="disabledTextInput" type="text" value="Slovakia" readOnly="true" placeholder="Slovakia" name="reg_country">
-            </div>
+          
           </div>
 
           <!-- STREET -->
           <div class="form-group">
             
-            <label class="control-label col-sm-4" for="fstreet">Street:</label>
+           <label class="control-label col-sm-4" for="fcity">City:</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="fstreet" placeholder="Enter street name" name="reg_street">
+              <input type="text" class="form-control" id="fcity" placeholder="Enter city" name="reg_city">
             </div>
 
           <!-- PSC -->
@@ -141,10 +146,20 @@
               <input type="text" class="form-control" id="fpsc" type="text" placeholder="Enter psc" name="reg_psc">
             </div>
           </div>
+
+          <div class="form-group">
+
+          <!-- COUNTRY -->
+            <label class="control-label col-sm-4" for="disabledTextInput">Country:</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="disabledTextInput" type="text" value="Slovakia" readOnly="true" placeholder="Slovakia" name="reg_country">
+            </div>
+          </div>
+
+
           <div class="row">
             <div class="col-md-push-4 col-md-8">
             <button type="submit" id="fsubmit" name="reg_submit"  class="btn btn-primary btn-block">Submit</button>
-            <!-- <input class=" btn btn-primary btn-block text-center" type="submit" name="reg_submit" value="Submit"/> -->
             </div>
           </div>
       </form>

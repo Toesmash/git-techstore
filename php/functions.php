@@ -1,7 +1,6 @@
 <?php 
-
-// CONNECTION NA LOCALHOST DATABAZU
-$con = mysqli_connect("localhost","root","","techstore");
+include ("connection.php");
+include ("orders.php");
 
 // SPOCITA KOLKO JE RIADKOV V KATEGORIACH
 function getRows($selector, $database){
@@ -612,11 +611,11 @@ function insert($switcher){
 			$city = $_POST['reg_city'];
 			$country = $_POST['reg_country'];
 			$street = $_POST['reg_street'];
+			$housenr = $_POST['reg_housenmbr'];
 			$psc = $_POST['reg_psc'];
 			$timestamp = date('Y-m-d H:i:s');
 
-			$sql = "INSERT INTO accounts (acc_role, acc_username, acc_name, acc_surname, acc_email, acc_psswrd, acc_phone, acc_city, acc_country, acc_street, acc_psc, acc_opendate) VALUES ('user','$username', '$name','$surname','$email','$password','$phone','$city','$country','$street','$psc','$timestamp')";
-
+			$sql = "INSERT INTO accounts (acc_role, acc_username, acc_name, acc_surname, acc_email, acc_psswrd, acc_phone, acc_city, acc_country, acc_street, acc_house_nr, acc_psc, acc_opendate) VALUES ('user','$username', '$name','$surname','$email','$password','$phone','$city','$country','$street','$housenr', '$psc','$timestamp')";
 			returnAlert("You have sucessfully created an account!", $sql); //vlastne tu aj posiela sqlku do databazy
 		}
 

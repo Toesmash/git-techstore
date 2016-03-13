@@ -19,18 +19,6 @@
 <body>
 	<?php include ("navbar.php"); ?>
 <div class="container-fluid">
-    <?php 
-    
-    	if(!empty($_SESSION)){
-          echo $_SESSION['name'];
-          echo '<br>';
-          echo $_SESSION['psswrd'];
-          echo '<br>';
-          echo $_SESSION['account_role'];
-          echo '<br>';
-      }
-
-    ?>
     
 	<header>
 		<div class="jumbotron">
