@@ -32,8 +32,17 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><p>Welcome, ';
                   echo $_SESSION['nick'];
+
+                  //Ak ma user order v stave processing tak sa zobrazule tooltip
+                  if (getOrderID($_SESSION['account_id'])==0){
+                    $var = 'Shopping cart is empty';
+                  }
+                  else {
+                    $var = getTooltip($_SESSION['account_id']);
+                  }
+
                   echo '</p></li>
-                        <li data-toggle="tooltip" title="FUNKCIA NA ZISKANIE POCTU POLOZIEK V OBJEDNAVKE + CENA" data-placement="bottom">
+                        <li data-toggle="tooltip" title="'.$var.'" data-placement="bottom">
                           <a href="orders.php"><i class="glyphicon glyphicon-shopping-cart"></i></a>
                         </li>
 
@@ -45,10 +54,6 @@
                             <li><a href="accounts/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                           </ul>
                         </li>
-
-
-
-
                     </ul>
                     
                   ';

@@ -225,12 +225,20 @@ height: 150px;
 }
 
 /*-----------------------------------------ALERTS--*/
-.alert.alert-success {
-
-    margin-top: 5px;
+.alert .alert-danger,
+.alert .alert-success,
+.alert .alert-info,
+.alert .alert-warning  {
+    margin-top: 120px;
 }
-.alert.alert-danger {
-    margin-top: 7px;
+
+
+.table>tbody>tr>td, .table>tfoot>tr>td{
+    vertical-align: middle;
+}
+
+.media .media-object{
+    vertical-align: middle;
 }
 
 /*--------------------------------------------COLUMNS*/

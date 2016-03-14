@@ -1,6 +1,11 @@
 <?php 
 	session_start();
 	include("php/functions.php");
+
+	if(isset($_GET['addproducttocart']) && $_GET['addproducttocart'] == 'true'){
+		$product_id = $_GET['pro_id'];
+		checkMyOrders($_SESSION['account_id'], $product_id);
+	}
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +23,17 @@
 
 <body>
 	<?php include ("navbar.php"); ?>
+	<?php 
+		if(isset($_GET['errorcode']) && $_GET['errorcode']=='duplicate'){
+			displayAlert('info', 'Info!','Product is already in your order. To edit quantity click on shopping cart!', 5);
+		}
+		else if(isset($_GET['errorcode']) && $_GET['errorcode']=='login'){
+			displayAlert('info', 'Info!','Log in in order to start shopping or register <a href="registration.php">here</a>!',5);
+		}
+		else if(isset($_GET['errorcode']) && $_GET['errorcode']=='noorder'){
+			displayAlert('danger', 'Error!','There are no products to display. You have no order in processing status.', 7);
+		}
+  	?>
 <div class="container-fluid">
     
 	<header>
@@ -66,7 +82,7 @@
 			}
 
 			else if(isset($_GET['all'])){
-				getProducts("SELECT * FROM products WHERE pro_category");
+				getProducts("SELECT * FROM products");
 			}
 
 			else if(isset($_GET['key'])){

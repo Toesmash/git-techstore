@@ -1,41 +1,6 @@
 <?php 
   session_start();
-  
-  $alert_error = '';
-  if(isset($_GET['login_error'])){
-    if($_GET['login_error']=='empty_submit'){
-      $alert_error = '<div class="alert alert-danger text-center">Password or Username was empty!</div>
-        <script>window.setTimeout(function() {
-          $(".alert").fadeTo(500, 0).slideUp(500, function(){
-              $(this).remove(); 
-            });
-          }, 5000);
-        </script>';
-    }
-    else if($_GET['login_error'] == 'wrong_submit') {
-      $alert_error = '<div class="alert alert-danger text-center">Wrong Username or Password! Please enter correct information.</div>
-        <script>window.setTimeout(function() {
-          $(".alert").fadeTo(500, 0).slideUp(500, function(){
-              $(this).remove(); 
-            });
-          }, 5000);
-        </script>
-      ';
-    }
-
-    else if($_GET['login_error'] == 'query_error') {
-      $alert_error = '<div class="alert alert-danger text-center">Query error, please contact us!</div>
-        <script>window.setTimeout(function() {
-          $(".alert").fadeTo(500, 0).slideUp(500, function(){
-              $(this).remove(); 
-            });
-          }, 5000);
-        </script>
-      ';
-    }
-
-  }
-
+  include("php/functions.php");
 ?>
 
 
@@ -56,6 +21,21 @@
 </head>
 <body>
   <?php include ("navbar.php"); ?>
+  <?php 
+    if(isset($_GET['login_error'])){
+      if($_GET['login_error']=='empty_submit'){
+        displayAlert('danger', 'Error!', 'Password or Username was empty!', 5);
+      }
+      else if($_GET['login_error'] == 'wrong_submit') {
+        displayAlert('danger', 'Error!', 'Wrong Username or Password! Please enter correct information!', 5);
+      }
+
+      else if($_GET['login_error'] == 'query_error') {
+        displayAlert('info', 'Info!','Product is already in your order. To edit quantity click on shopping cart!', 5);
+
+      }
+    }
+  ?>
   <div class="container-fluid">
 
 

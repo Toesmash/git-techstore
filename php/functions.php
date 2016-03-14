@@ -1,6 +1,6 @@
 <?php 
 include ("connection.php");
-include ("orders.php");
+include ("order_functions.php");
 
 // SPOCITA KOLKO JE RIADKOV V KATEGORIACH
 function getRows($selector, $database){
@@ -14,18 +14,18 @@ function getRows($selector, $database){
 }
 
 
-function adminFetchTable($id, $database, $separator){
+function adminFetchTable($id, $database, $idofdeletingproduct){
 	global $con;
 
 	if($database=='products'){
-		if($separator==0){
+		if($idofdeletingproduct==0){
 			$sql = 'SELECT products.pro_id, products.pro_name, brands.brand_name, products.pro_price, products.pro_image, products.pro_keywords FROM products LEFT JOIN brands ON pro_brand = brand_id WHERE pro_category = '.$id.'';
 		}
 		else {
-			$sql = 'SELECT products.pro_id, products.pro_name, brands.brand_name, products.pro_price, products.pro_image FROM products JOIN brands ON pro_brand = brand_id WHERE pro_category = '.$id.' AND pro_id='.$separator.'';
+			$sql = 'SELECT products.pro_id, products.pro_name, brands.brand_name, products.pro_price, products.pro_image FROM products JOIN brands ON pro_brand = brand_id WHERE pro_category = '.$id.' AND pro_id='.$idofdeletingproduct.'';
 
 		}
-		echo $sql;
+		// echo $sql;
 		$run_data = mysqli_query($con, $sql);
 
 		while ($data = mysqli_fetch_array($run_data)){
@@ -44,7 +44,7 @@ function adminFetchTable($id, $database, $separator){
 					<td><img src="product_images/'.$data_image.'" class="imageClip" /></td>
 					<td>'.$data_keywords.'</td>
 					';
-			if($separator==0){
+			if($idofdeletingproduct==0){
 				echo'
 					<td><a href="update.php?id='.$data_id.'&db=products&idname=pro_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
 					<td><a href="delete.php?id='.$data_id.'&db=products&idname=pro_id&category_id='.$id.'&action=deleteproduct" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
@@ -69,11 +69,11 @@ function adminFetchTable($id, $database, $separator){
 		}
 	}
 	else if($database=='category'){
-		if($separator==0){
+		if($idofdeletingproduct==0){
 			$sql = 'SELECT * FROM category';
 		}
 		else{
-			$sql = 'SELECT * FROM category WHERE cat_id='.$separator.'';
+			$sql = 'SELECT * FROM category WHERE cat_id='.$idofdeletingproduct.'';
 
 		}
 
@@ -87,7 +87,7 @@ function adminFetchTable($id, $database, $separator){
 					<td scope="row">'.$data_id.'</td>
 					<td>'.$data_name.'</td>
 				';
-			if($separator==0){
+			if($idofdeletingproduct==0){
 				echo'
 					<td><a href="update.php?id='.$data_id.'&db=category&idname=cat_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
 					<td><a href="delete.php?id='.$data_id.'&db=category&idname=cat_id&action=deletecategory" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
@@ -111,11 +111,11 @@ function adminFetchTable($id, $database, $separator){
 	}
 
 	else if($database=='brands'){
-		if($separator==0){
+		if($idofdeletingproduct==0){
 			$sql = 'SELECT * FROM brands';
 		}
 		else{
-			$sql = 'SELECT * FROM brands WHERE brand_id='.$separator.'';
+			$sql = 'SELECT * FROM brands WHERE brand_id='.$idofdeletingproduct.'';
 
 		}
 
@@ -129,7 +129,7 @@ function adminFetchTable($id, $database, $separator){
 					<td scope="row">'.$data_id.'</td>
 					<td>'.$data_name.'</td>
 				';
-			if($separator==0){
+			if($idofdeletingproduct==0){
 				echo'
 					<td><a href="update.php?id='.$data_id.'&db=brands&idname=brand_id" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
 					<td><a href="delete.php?id='.$data_id.'&db=brands&idname=brand_id&action=deletebrand" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
@@ -157,7 +157,6 @@ function adminFetchTable($id, $database, $separator){
 function deleteAdmin($database,$idname, $id ){
 	global $con;
 	$sql = 'DELETE FROM '.$database.' WHERE '.$idname.'="'.$id.'"';
-	// echo $sql;
 	returnAlert("You have succesfully removed a record from database!", $sql);
 
 }
@@ -489,8 +488,16 @@ function getProducts($query){
 					</div>
 					<div class="product_price">
 					<p>'.$product_price.'€</p>
-					</div>
-					<button class="btn btn-md btn_add_to_cart"><strong>Add to cart</strong></button>
+					</div>';
+			if(isset($_SESSION['account_id'])){
+				echo '<a href="products.php?all&pro_id='.$product_id.'&addproducttocart=true" class="btn btn-md btn_add_to_cart"><strong>Add to cart</strong></a>';
+			}
+			else {
+				echo '<a href="products.php?all&errorcode=login" class="btn btn-md btn_add_to_cart"><strong>Add to cart</strong></a>';
+			}
+
+			echo '
+					
 				</div>
 
 				<div id="modalnr_'.$x.'" class="modal fade" role="dialog">
@@ -519,7 +526,22 @@ function getProducts($query){
        	 						</div>
 
       						</div>
-      						<div class="modal-footer">
+
+
+			
+
+
+
+
+      						<div class="modal-footer">';
+      							if(isset($_SESSION['account_id'])){
+									echo '<a href="products.php?all&pro_id='.$product_id.'&addproducttocart=true" class="btn btn-md btn_add_to_cart"><strong>Add to cart</strong></a>';
+								}
+								else {
+									echo '<a href="products.php?all&errorcode=login" class="btn btn-md btn_add_to_cart"><strong>Add to cart</strong></a>';
+								}
+
+								echo '
         						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       						</div>
 						</div>

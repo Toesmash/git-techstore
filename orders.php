@@ -1,40 +1,15 @@
 <?php 
   session_start();
-  
-  $alert_error = '';
-  if(isset($_GET['login_error'])){
-    if($_GET['login_error']=='empty_submit'){
-      $alert_error = '<div class="alert alert-danger text-center">Password or Username was empty!</div>
-        <script>window.setTimeout(function() {
-          $(".alert").fadeTo(500, 0).slideUp(500, function(){
-              $(this).remove(); 
-            });
-          }, 5000);
-        </script>';
-    }
-    else if($_GET['login_error'] == 'wrong_submit') {
-      $alert_error = '<div class="alert alert-danger text-center">Wrong Username or Password! Please enter correct information.</div>
-        <script>window.setTimeout(function() {
-          $(".alert").fadeTo(500, 0).slideUp(500, function(){
-              $(this).remove(); 
-            });
-          }, 5000);
-        </script>
-      ';
-    }
+  include 'php/functions.php';
 
-    else if($_GET['login_error'] == 'query_error') {
-      $alert_error = '<div class="alert alert-danger text-center">Query error, please contact us!</div>
-        <script>window.setTimeout(function() {
-          $(".alert").fadeTo(500, 0).slideUp(500, function(){
-              $(this).remove(); 
-            });
-          }, 5000);
-        </script>
-      ';
-    }
+  if(isset($_GET['delete']) && $_GET['delete']=='true' && isset($_GET['order_id']) && isset($_GET['product_id'])){
+    $acc_id = $_SESSION['account_id'];
+    $order_id = $_GET['order_id'];
+    $product_id = $_GET['product_id'];
 
+    deleteFromOrderDetials($acc_id, $order_id, $product_id);
   }
+
 
 ?>
 
@@ -76,6 +51,13 @@
           </div>
         </form>
       </div>    
+    </div>
+      <div class="row">
+        <div class="col-md-12">
+        <?php  
+          fetchOrderProducts($_SESSION['account_id']);
+        ?>
+        </div>
     </div>
 
     </div> <!--Container -->
