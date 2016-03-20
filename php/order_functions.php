@@ -21,6 +21,7 @@ function checkMyOrders($acc_id, $product_id){
 
 }
 
+
 // VYTVORENIE UPLNE NOVEJ OBJEDNAVKY
 function createNewOrder($acc_id, $product_id){
 	global $con;
@@ -61,6 +62,29 @@ function addProductToOrderDetails($order_id, $acc_id, $product_id){
 	}
 }
 
+
+function historyFetch($acc_id){
+	global $con;
+	$sql = "SELECT * FROM orders WHERE order_userid=$acc_id AND order_status='disbursed'";
+	$run_data = mysqli_query($con, $sql);
+
+	$rowcount = mysqli_num_rows($run_data);
+
+	if($rowcount==0){
+		header('Location: products.php?all&errorcode=noorder');
+
+	}
+
+	else {
+		echo '
+			<h4>Number of orders: '.$rowcount.'</h4>
+		';
+	}
+
+
+}
+
+
 // VRATI VSETKY POLOZKY KTORE ZAKAZNIK MA V AKTUALNEJ OBJEDNAVKE KT. JE V STATUSE PROCESSING
 function fetchOrderProducts($acc_id){
 	global $con;
@@ -69,7 +93,7 @@ function fetchOrderProducts($acc_id){
 	$order_id = getOrderId($acc_id);
 
 	if($order_id>0){
-		$sql = "SELECT products.pro_id, products.pro_name, products.pro_price, products.pro_desc, products.pro_image, brands.brand_name, orderDetails.details_qnty, orderDetails.details_price, orders.order_totalprice FROM products JOIN brands ON products.pro_brand = brands.brand_id JOIN orderDetails ON products.pro_id = orderDetails.details_productid JOIN orders ON orders.order_id = orderDetails.details_orderid WHERE orderDetails.details_accountid = $acc_id";
+		$sql = "SELECT products.pro_id, products.pro_name, products.pro_price, products.pro_desc, products.pro_image, brands.brand_name, orderDetails.details_qnty, orderDetails.details_price, orders.order_totalprice FROM products JOIN brands ON products.pro_brand = brands.brand_id JOIN orderDetails ON products.pro_id = orderDetails.details_productid JOIN orders ON orders.order_id = orderDetails.details_orderid WHERE orderDetails.details_accountid = $acc_id AND orders.order_status = 'processing'";
 		$run_data = mysqli_query($con, $sql);
 
 		// spocita kolko produktov sa nachadza v jednej objednavke
@@ -155,7 +179,7 @@ function fetchOrderProducts($acc_id){
                         <td></td>
                         <td></td>
                         <td>
-                        <a class="btn btn-success btn-block" href="#">Checkout</a>
+                        <a class="btn btn-success btn-block" href="checkout.php?acc_id='.$acc_id.'&order_id='.$order_id.'">Checkout</a>
                         </td>
                     </tr>
                 </tbody>
@@ -175,7 +199,14 @@ function calculateTotalePrice($order_id, $acc_id){
 	$sql = "SELECT SUM(details_price) AS totalprice FROM orderDetails WHERE details_orderid = $order_id AND details_accountid = $acc_id";
 	$run_data = mysqli_query($con, $sql);
 	$data = mysqli_fetch_array($run_data);
-	return $data['totalprice'];
+	$totalprice = $data['totalprice'];
+
+	// Updatene aj data aj v orders
+	$sql = "UPDATE orders SET order_totalprice = $totalprice WHERE order_id = $order_id AND order_userid = $acc_id";
+	$run_data = mysqli_query($con, $sql);
+
+	// vrati celkovu sumu objednavky
+	return $totalprice;
 
 }
 
@@ -227,8 +258,77 @@ function getTooltip($acc_id){
 	}
 	else {
 		return "$rowcount products, worth $totalprice €";
-	}
-	
+	}	
+}
+
+
+function disburseOrder($acc_id, $order_id){
+	global $con;
+    $sql = "UPDATE orders SET order_status = 'disbursed' WHERE order_id = $order_id AND order_userid = $acc_id";
+    $run_data = mysqli_query($con, $sql);
+
+   
+
+}
+
+function getPersonalInfo($acc_id){
+	global $con;
+    $sql = "SELECT * FROM accounts WHERE acc_id = $acc_id";
+    $run_data = mysqli_query($con, $sql);
+
+    $data = mysqli_fetch_array($run_data);
+    $name = $data['acc_name'];
+    $surname = $data['acc_surname'];
+    $email = $data['acc_email'];
+    $phone = $data['acc_phone'];
+
+    return array($name, $surname, $email, $phone);
+}
+
+
+function getOrdersCheckout($acc_id, $order_id){
+	global $con;
+	$sql = "SELECT  products.pro_name, products.pro_price, orderDetails.details_qnty FROM products JOIN orderDetails ON products.pro_id = orderDetails.details_productid WHERE orderDetails.details_accountid = $acc_id AND orderDetails.details_orderid = $order_id";
+	$run_data = mysqli_query($con, $sql);
+
+
+	echo '
+			<table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th >Product</th>
+                        <th >Qnty</th>
+                        <th style="width: 20%;">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+		';
+
+	while ($data = mysqli_fetch_array($run_data)){
+			$product_name = $data['pro_name'];
+			$product_price = $data['pro_price'];
+			$order_qnty = $data['details_qnty'];
+
+			echo '
+					<tr>
+						<td><strong>'.$product_name.'</strong></td>
+						<td>x '.$order_qnty.'</td>
+						<td>'.$product_price.' €</td>
+                    </tr>
+			';
+		}
+
+	$totalprice = calculateTotalePrice($order_id, $acc_id);
+	echo '
+					<tr>
+                        <td>   </td>
+                        <td><h4>Total</h4></td>
+                        <td class="text-right"><h5><strong>'.$totalprice.' €</strong></h5></td>
+                    </tr>
+                </tbody>
+            </table>
+        ';
+
 }
 
 

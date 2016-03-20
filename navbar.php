@@ -50,7 +50,7 @@
                           <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="glyphicon glyphicon-user"></i> <i class="caret"></i></a>
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Profile</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-tag"></span> History of orders</a></li>
+                            <li><a href="history.php"><span class="glyphicon glyphicon-tag"></span> History of orders</a></li>
                             <li><a href="accounts/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                           </ul>
                         </li>

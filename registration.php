@@ -1,9 +1,8 @@
+
 <?php 
   $wrong_password = '';
   include("php/functions.php");
-
   if(isset($_POST['reg_submit'])){
-
     if($_POST['reg_psswrd'] == $_POST['reg_psswrdchck']){
       insert("4");
     }
@@ -23,7 +22,6 @@
     
     
   }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -172,6 +170,3 @@
     <script src="js/internal/script.js"></script>
 </body>
 </html>
-
-
-

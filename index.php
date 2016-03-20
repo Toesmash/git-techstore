@@ -22,6 +22,17 @@
 <body>
   <?php include ("navbar.php"); ?>
   <?php 
+    if(isset($_GET['disburse']) && $_GET['disburse']=='completed'){
+        displayAlert('success', 'Success!', 'Your order has been disbursed!', 5);
+
+    }
+
+    if(isset($_GET['disburse']) && $_GET['disburse']=='true'){
+        disburseOrder($_GET['acc_id'], $_GET['order_id']);
+        header('Location: index.php?disburse=completed');
+
+    }
+
     if(isset($_GET['login_error'])){
       if($_GET['login_error']=='empty_submit'){
         displayAlert('danger', 'Error!', 'Password or Username was empty!', 5);
