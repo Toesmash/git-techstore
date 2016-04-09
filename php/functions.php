@@ -154,6 +154,122 @@ function adminFetchTable($id, $database, $idofdeletingproduct){
 	}
 }
 
+function editPersonal($acc_id){
+	global $con;
+	$sql = "SELECT * FROM accounts WHERE acc_id='$acc_id'";
+	$run_sql = mysqli_query($con, $sql);
+	$data = mysqli_fetch_array($run_sql);
+
+	$user = $data['acc_username'];
+	$name = $data['acc_name'];
+	$surname = $data['acc_surname'];
+	$email = $data['acc_email'];
+	$phone = $data['acc_phone'];
+	$street = $data['acc_street'];
+	$housenr = $data['acc_house_nr'];
+	$city = $data['acc_city'];
+	$psc = $data['acc_psc'];
+
+	echo '
+		<div class="row reg_customer">
+      <div class="col-md-10">
+      <form class="form-horizontal" role="form" method="post" action="personal.php">
+          <!-- USERNAME -->
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="fusername">Username:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" value="'.$user.'" id="fusername" name="reg_username" required>
+            </div>
+          </div>
+
+          
+          <!-- NAME -->
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="fname">Name:</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="fname" value="'.$name.'" name="reg_name" required>
+          </div>
+        
+          <!-- SURNAME -->
+            <label class="control-label col-sm-2" for="fsurname">Surname:</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="fsurname" value="'.$surname.'" name="reg_surname" required>
+            </div>
+          </div>
+
+          <!-- ID- Hiden - user to nepotrebuje vobec vidiet -->
+          <input type="hidden" class="form-control" id="fid" value="'.$acc_id.'" name="reg_accid">
+
+          <!-- EMAIL -->
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="femail">E-mail address:</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" id="femail" value="'.$email.'" name="reg_email" required>
+            </div>
+          </div>
+
+          <!-- PHONE -->
+          <div class="form-group">
+              <label class="control-label col-sm-4" for="fphone">Phone number:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="fphone" value="'.$phone.'" name="reg_phone">
+              </div>
+          </div>
+
+           <!-- CITY -->
+          <div class="form-group">
+             <label class="control-label col-sm-4" for="fstreet">Street:</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="fstreet" value="'.$street.'" name="reg_street">
+            </div>
+
+
+            <!-- PSC -->
+              <label class="control-label col-sm-2" for="fhousenmbr">House number:</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="fhousenmbr" type="text" value="'.$housenr.'" name="reg_housenmbr">
+              </div>
+          </div>
+
+          <!-- STREET -->
+          <div class="form-group">
+            
+           <label class="control-label col-sm-4" for="fcity">City:</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="fcity" value="'.$city.'" name="reg_city">
+            </div>
+
+          <!-- PSC -->
+            <label class="control-label col-sm-2" for="fpsc">Postal code:</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="fpsc" type="text" value="'.$psc.'" name="reg_psc">
+            </div>
+          </div>
+
+          <div class="form-group">
+
+          <!-- COUNTRY -->
+            <label class="control-label col-sm-4" for="disabledTextInput">Country:</label>
+            <div class="col-sm-8">
+              <input class="form-control" id="disabledTextInput" type="text" value="Slovakia" readOnly="true" placeholder="Slovakia" name="reg_country">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-push-4 col-md-8">
+            <button type="submit" id="fsubmit" name="edit_submit"  class="btn btn-warning btn-block">Edit</button>
+            </div>
+          </div>
+      </form>
+      </div>
+    </div>
+	';
+
+
+}
+
+
 function deleteAdmin($database,$idname, $id ){
 	global $con;
 	$sql = 'DELETE FROM '.$database.' WHERE '.$idname.'="'.$id.'"';
@@ -562,13 +678,13 @@ function returnAlert($string, $sql){
 
 	if ($con->query($sql) === TRUE) {
 		echo 	'
-			<div class="alert alert-success text-center" role="alert">
+			<div class="alert alert-success text-center">
  				<strong>Success!</strong> '.$string.'
 			</div>
 			<script>
 				window.setTimeout(function() {
 					$(".alert").fadeTo(600, 0).slideUp(200, function(){
-    					$(this).remove(); 
+    					$(this).remove();
     				});
 			}, 2000);
 
@@ -685,8 +801,35 @@ function update($switcher){
 
 		$sql = "UPDATE brands SET brand_name = '$brand_name' WHERE brand_id= '$brand_id' ;";
 
-		returnAlert("You have sucessfully updated category!", $sql); //vlastne tu aj posiela sqlku do databazy
+		returnAlert("You have sucessfully updated category!", $sql);
 		
+	}
+
+	if($switcher=="4"){
+		$id = $_POST['reg_accid'];
+		$username = $_POST['reg_username'];
+		$name = $_POST['reg_name'];
+		$surname = $_POST['reg_surname'];
+		$email = $_POST['reg_email'];
+		$phone = $_POST['reg_phone'];
+		$city = $_POST['reg_city'];
+		$country = $_POST['reg_country'];
+		$street = $_POST['reg_street'];
+		$housenr = $_POST['reg_housenmbr'];
+		$psc = $_POST['reg_psc'];
+
+		$sql = "UPDATE accounts SET acc_name = '$name', acc_surname = '$surname', acc_username='$username', acc_email='$email', acc_phone='$phone', acc_city='$city', acc_street='$street', acc_country='$country', acc_house_nr='$housenr', acc_psc='$psc' WHERE acc_id = '$id'";
+		returnAlert("You have sucessfully updated your personal information!", $sql);
+		
+	}
+
+	if($switcher=="5"){
+		$quantity = $_POST['qnty'];
+		$pro_id = $_GET['product_id'];
+		$order_id = $_GET['order_id'];
+
+		$sql = "UPDATE orderDetails SET details_qnty = '$quantity' WHERE details_orderid = '$order_id' AND details_productid='$pro_id'";
+		$run_data = mysqli_query($con, $sql);
 	}
 
 

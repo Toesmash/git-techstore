@@ -33,6 +33,9 @@
 		else if(isset($_GET['errorcode']) && $_GET['errorcode']=='noorder'){
 			displayAlert('danger', 'Error!','There are no products to display. You have no order in processing status.', 7);
 		}
+		else if(isset($_GET['errorcode']) && $_GET['errorcode']=='nohistoryorder'){
+			displayAlert('danger', 'Error!','There is no history of orders to display. You have not disbursed any order yet', 7);
+		}
   	?>
 <div class="container-fluid">
     

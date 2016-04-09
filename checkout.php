@@ -5,10 +5,7 @@
   if(isset($_GET['acc_id']) && isset($_GET['order_id'])){
       $order_id = $_GET['order_id'];
       $acc_id = $_GET['acc_id'];
-
-
   }
-
 
 ?>
 <!DOCTYPE html>
@@ -31,12 +28,10 @@
     <div class="row checkout">
 
       <div class="col-md-4 checkout_first">
-        <h3 class="text-center text-danger">Order detials</h3>
+        <h3 class="text-center text-warning">Order detials</h3>
         <?php  
           getOrdersCheckout($_GET['acc_id'], $_GET['order_id']);
         ?>
-
-        <a href="orders.php" class="btn btn-warning btn-block">Modify</a>
       </div>
 
 
@@ -48,46 +43,51 @@
           <label class="control-label custom-label col-sm-3" for="fname">Name:</label>
           <p><?php echo $info[0] ?></p>
         </div>
+
         <div class="row user_info">
           <label class="control-label custom-label col-sm-3" for="fname">Surname:</label>
           <p><?php echo $info[1] ?></p>
           
         </div>
+
         <div class="row user_info">
           <label class="control-label custom-label col-sm-3" for="fname">E-mail:</label>
           <p><?php echo $info[2] ?></p>
           
         </div>
+
         <div class="row user_info">
           <label class="control-label custom-label col-sm-3" for="fname">Phone:</label>
           <p><?php echo $info[3] ?></p>
         </div>
-        <a href="#" class="btn btn-primary btn-block">Edit</a>
+
+        <div class="row user_info">
+          <label class="control-label custom-label col-sm-3" for="faddress">Address:</label>
+          <p><?php echo $info[4] ?></p>
+        </div>
+        
       </div>
 
       <div class="col-md-4 checkout_third">
-        <h3 class="text-center text-success">Shipping and payment</h3>
-        <form class="form-horizontal" role="form" method="post" action="index.php">
-          
-          <div class="form-group">
-            <label class="control-label custom-label col-sm-3" for="faddress">Address:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="faddress" placeholder="Enter username" name="reg_username" required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="control-label custom-label col-sm-3" for="fpayment">Payment:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="fpayment" placeholder="Enter username" name="reg_username" required>
-            </div>
-          </div>
-
-        </form>
-
-        <a href="index.php?disburse=true&acc_id=<?php echo $acc_id; ?>&order_id=<?php echo $order_id; ?>" class="btn btn-success btn-block">Disburse</a>
+        <h3 class="text-center text-success">Complete and disburse order</h3>
+        <p>Make sure your contact details are correct!</p>
+        <img src="img/green_tick.png" alt="green tick" class="img-checkout img-responsive">
       </div>
 
+    </div>
+    <div class="row" style="padding-top: 20px;">
+      <div class="col-md-4">
+        <a href="orders.php" class="btn btn-warning btn-block btn-top-mar">Modify</a>
+
+      </div>
+      <div class="col-md-4">
+        <a href="personal.php?acc_id=<?php echo $acc_id; ?>&order_id=<?php echo $order_id; ?>" class="btn btn-primary btn-block btn-top-mar">Edit</a>
+
+      </div>
+      <div class="col-md-4">
+        <a href="index.php?disburse=true&acc_id=<?php echo $acc_id; ?>&order_id=<?php echo $order_id; ?>" class="btn btn-success btn-block btn-top-mar">Disburse</a>
+
+      </div>
     </div>
    </div> <!--Container -->
 

@@ -15,11 +15,13 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="index.php"><i class="glyphicon glyphicon-home"></i></a></li>
                 <li><a href="products.php?all"><i class="glyphicon glyphicon-phone"></i></a></li>
-                <li><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i></a></li>
+                <!-- <li><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i></a></li> -->
             </ul>
 
             <?php  
               if(empty($_SESSION)){
+
+
                   echo '  
                     <ul class="nav navbar-nav navbar-right">
                         <li><a id="sign_in_affix" href="javascript:;">Sign in</a></li>
@@ -28,6 +30,7 @@
                 include ("login_affix.php");
                }
                else{
+                  $acc_id = $_SESSION['account_id'];
                   echo '
                     <ul class="nav navbar-nav navbar-right">
                         <li><p>Welcome, ';
@@ -49,7 +52,7 @@
                         <li class="dropdown">
                           <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="glyphicon glyphicon-user"></i> <i class="caret"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Profile</a></li>
+                            <li><a href="personal.php?acc_id='.$acc_id.'"><span class="glyphicon glyphicon-pencil"></span> Edit profile</a></li>
                             <li><a href="history.php"><span class="glyphicon glyphicon-tag"></span> History of orders</a></li>
                             <li><a href="accounts/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                           </ul>

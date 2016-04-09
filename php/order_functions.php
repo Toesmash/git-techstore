@@ -71,15 +71,55 @@ function historyFetch($acc_id){
 	$rowcount = mysqli_num_rows($run_data);
 
 	if($rowcount==0){
-		header('Location: products.php?all&errorcode=noorder');
-
+		header('Location: products.php?all&errorcode=nohistoryorder');
 	}
-
 	else {
 		echo '
-			<h4>Number of orders: '.$rowcount.'</h4>
+			<table class="table table-striped">
+			    <thead>
+			      <tr>
+			      	<th>Order ID</th>
+			      	<th>Total price</th>
+			        <th>Timestamp</th>
+			        <th>Ship address</th>
+			        <th>Status</th>
+			      </tr>
+			    </thead>
+			    <tbody>
 		';
-	}
+
+		while ($data = mysqli_fetch_array($run_data)){
+			$order_id = $data['order_id'];
+			$order_totalprice = $data['order_totalprice'];
+			$order_ts = $data['order_timestamp'];
+			$order_address = $data['order_shipaddress'];	
+			$order_status = $data['order_status'];	
+			echo '
+				<tr>
+			        <td>'.$order_id.'</td>
+			        <td>'.$order_totalprice.' €</td>
+			        <td>'.$order_ts.'</td>
+			        <td>'.$order_address.'</td>
+			        <td>'.$order_status.'</td>
+			    </tr>
+			';
+		}
+
+		echo '
+			    </tbody>
+			  </table>
+		';
+
+
+	} 
+
+	// else {
+	// 	echo '
+
+			      
+	// 		<h4>Number of orders: '.$rowcount.'</h4>
+	// 	';
+	// }
 
 
 }
@@ -88,6 +128,7 @@ function historyFetch($acc_id){
 // VRATI VSETKY POLOZKY KTORE ZAKAZNIK MA V AKTUALNEJ OBJEDNAVKE KT. JE V STATUSE PROCESSING
 function fetchOrderProducts($acc_id){
 	global $con;
+	$increment=0;
 
 	// zisti order_id z orders tabulky
 	$order_id = getOrderId($acc_id);
@@ -121,6 +162,7 @@ function fetchOrderProducts($acc_id){
 		// Sekcia kde je loop ktory zobrazi vsetky produkty objednavky ako TABLE ROW <tr>
 
 		while ($data = mysqli_fetch_array($run_data)){
+			$increment++;
 			$product_id = $data['pro_id'];
 			$product_name = $data['pro_name'];
 			$product_price = $data['pro_price'];
@@ -128,7 +170,12 @@ function fetchOrderProducts($acc_id){
 			$product_image = $data['pro_image'];
 			$brand_name = $data['brand_name'];
 			$order_qnty = $data['details_qnty'];
-			$order_subprice = $data['details_price'];
+			$order_subprice = $product_price * $order_qnty;
+
+			$sql = "UPDATE orderDetails SET details_price = '$order_subprice' WHERE details_orderid = '$order_id' AND details_productid='$product_id'";
+			$update_data= mysqli_query($con, $sql);
+
+
 			echo '
 					<tr>
                         <td class="col-sm-8 col-md-6">
@@ -146,7 +193,9 @@ function fetchOrderProducts($acc_id){
 
 
                         <td class="col-md-1" style="text-align: center">
-                            <input type="number" class="form-control text-center" value="'.$order_qnty.'">
+                        	<form method="post" id="quantity'.$increment.'" action="orders.php?update=true&order_id='.$order_id.'&product_id='.$product_id.'">
+                        		 <input type="number" min=0 max=10 class="form-control text-center" name="qnty" value="'.$order_qnty.'"&>
+							</form>
                         </td>
                         <td class="col-md-1 text-center"><strong>'.$product_price.' €</strong></td>
                         <td class="col-md-1 text-center"><strong>'.$order_subprice.' €</strong></td>
@@ -154,6 +203,9 @@ function fetchOrderProducts($acc_id){
                         <a href="orders.php?delete=true&order_id='.$order_id.'&product_id='.$product_id.'" class="btn btn-danger btn-block">
                             <span class="glyphicon glyphicon-remove"></span> Delete
                         </a>
+                        <button class="btn btn-info btn-block" form="quantity'.$increment.'" type="submit">
+                            <span class="glyphicon glyphicon-refresh"></span> Update
+                        </button>
 
                         </td>
                     </tr>
@@ -262,27 +314,51 @@ function getTooltip($acc_id){
 }
 
 
+// DISBURSTNE ORDER A NASTAVI ADRESU
 function disburseOrder($acc_id, $order_id){
 	global $con;
-    $sql = "UPDATE orders SET order_status = 'disbursed' WHERE order_id = $order_id AND order_userid = $acc_id";
+	$address = array();
+
+	$sql2 = "SELECT * FROM accounts WHERE acc_id = $acc_id";
+	$run_data = mysqli_query($con, $sql2);
+	$data = mysqli_fetch_array($run_data);
+	$order_address = $data['acc_street'];
+	$address[0] = $order_address; 
+	$order_address = $data['acc_house_nr'];
+	$address[1] = $order_address; 
+	$order_address = $data['acc_city'];
+	$address[2] = $order_address; 
+
+	// join 3 hodnot z 3 sql stlpcov do jedneho stringu = adresa + cislo domu + mesto
+	$order_address = implode(" ", $address);
+    $sql = "UPDATE orders SET order_status = 'disbursed', order_shipaddress = '$order_address' WHERE order_id = $order_id AND order_userid = $acc_id";
     $run_data = mysqli_query($con, $sql);
-
-   
-
 }
 
+
+//
 function getPersonalInfo($acc_id){
 	global $con;
     $sql = "SELECT * FROM accounts WHERE acc_id = $acc_id";
     $run_data = mysqli_query($con, $sql);
+    $address = array();
 
     $data = mysqli_fetch_array($run_data);
     $name = $data['acc_name'];
     $surname = $data['acc_surname'];
     $email = $data['acc_email'];
     $phone = $data['acc_phone'];
+	$order_address = $data['acc_street'];
+	$address[0] = $order_address; 
+	$order_address = $data['acc_house_nr'];
+	$address[1] = $order_address; 
+	$order_address = $data['acc_city'];
+	$address[2] = $order_address; 
 
-    return array($name, $surname, $email, $phone);
+	// join 3 hodnot z 3 sql stlpcov do jedneho stringu = adresa + cislo domu + mesto
+	$order_address = implode(" ", $address);
+
+    return array($name, $surname, $email, $phone, $order_address);
 }
 
 

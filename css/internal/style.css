@@ -1,11 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 @import "login_style.css";
 @import "navbar_style.css";
 
 /*--------------------------------------------STRUKTURA*/
 
 html {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: font-family: 'Raleway', sans-serif, serif;
     font-size: 15px;
     line-height: 1.5;
 }
@@ -14,19 +14,15 @@ body{
     padding-top: 60px;
 }
 
-@media (max-width: 979px) {
-  body {
-    padding-top: 0px;
-  }
+h1, h2, h3 {
+    color: #393F4D;
 }
 
 .container-fluid {
     max-width: 1000px;
     /*background-color: lightblue;*/
     /*border: 1px dashed navy;*/
-
 }
-
 
 /*--------------------------------------------HEADER*/
 #header{
@@ -225,12 +221,12 @@ height: 150px;
 }
 
 /*-----------------------------------------ALERTS--*/
-.alert .alert-danger,
+/*.alert .alert-danger,
 .alert .alert-success,
 .alert .alert-info,
 .alert .alert-warning  {
     margin-top: 120px;
-}
+}*/
 
 
 .table>tbody>tr>td, .table>tfoot>tr>td{
@@ -273,12 +269,25 @@ height: 150px;
     margin-left: 15px;
 }
 
-.user_info {
-/*
-    line-height: 30px;
-    border: 2px solid navy;
-    */
+.btn-top-mar {
+    font-weight: bold;
 }
+
+.img-checkout {
+    width:40%;
+    margin: 0 auto;
+}
+
+.img-icons {
+    height: 100px;
+    margin-top: -20px;
+}
+
+.btn-shop {
+    margin-bottom: 50px;
+
+}
+
 /*--------------------------------------------COLUMNS*/
 
 /*.control-label, .jumbotron, .product_price, .product_image, .product_title,.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,  .col-md-7,  

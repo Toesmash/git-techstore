@@ -10,6 +10,9 @@
     deleteFromOrderDetials($acc_id, $order_id, $product_id);
   }
 
+  if(isset($_GET['update']) && $_GET['update']=='true'){
+    update("5");
+  }
 
 ?>
 
