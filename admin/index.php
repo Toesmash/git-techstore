@@ -39,6 +39,8 @@
 
 		deleteAdmin($db,$name_of_id, $id);
 	}
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +53,7 @@
 
 	    <link href="../css/bootstrap.min.css" rel="stylesheet">
 	  	<link rel="stylesheet" href="css/admin_style.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	</head>
 <body>
 
@@ -61,27 +64,121 @@
 			<?php include ("admin_sidebar.php"); ?>
 		</div>
 		<div class="col-md-8">
-			<?php 
+			<div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading special-panel">
+                            <div class="row">
+                                <div class="row text-center">
+                                    <i class="glyphicon glyphicon-phone dashboard"></i>
+                                </div>
+                                <div class="col-xs-12 text-center">
+                                    <div class="plussize">
+                                        <?php getStats("*", "products"); ?>
+                                    </div>
+                                    <p>Products</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading special-panel">
+                            <div class="row">
+                                <div class="row text-center">
+                                    <i class="glyphicon glyphicon-user dashboard"></i>
+                                </div>
+                                <div class="col-xs-12 text-center">
+                                    <div class="plussize">
+                                        <?php getStats("*", "accounts"); ?>
+                                    </div>
+                                    <p>Accounts</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading special-panel">
+                            <div class="row">
+                                <div class="row text-center">
+                                    <i class="glyphicon glyphicon-barcode dashboard"></i>
+                                </div>
+                                <div class="col-xs-12 text-center">
+                                    <div class="plussize">
+                                        <?php getStats("*", "orders"); ?>
+                                    </div>
+                                    <p>Orders!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading special-panel">
+                            <div class="row">
+                                <div class="row text-center">
+                                	<i class="glyphicon glyphicon-piggy-bank dashboard"></i>
+                                </div>
+                                <div class="col-xs-12 text-center">
+                                    <div class="plussize">
+                                        <?php getStats("SUM(order_totalprice)", "orders"); ?>
+                                    </div>
+                                    <p>Income</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-				echo $_SESSION['name'];
-				echo '<br>';
-				echo $_SESSION['psswrd'];
-				echo '<br>';
-				echo $_SESSION['account_role'];
-				echo '<br>';
-				echo $_SESSION['nick'];
-				echo '<br>';
-				echo $_SESSION['account_id'];
-				echo '<br>';
 
-			?>
+            <div class="row">
+                <iframe width="100%" allowtransparency="true" frameborder="0" class="trelloFrame" src="https://trello.com/b/hlI8Nlif.html"></iframe>
+            </div>
+
 
 		</div>
+
+        </div>
+
 	</div>
 
 
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/internal/script.js"></script>
+    <!-- <script type="text/javascript" src="jquery.githubRepoWidget.min.js"></script> -->
 </body>
 </html>

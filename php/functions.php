@@ -1,6 +1,7 @@
 <?php 
 include ("connection.php");
 include ("order_functions.php");
+include ("admin_functions.php");
 
 // SPOCITA KOLKO JE RIADKOV V KATEGORIACH
 function getRows($selector, $database){
