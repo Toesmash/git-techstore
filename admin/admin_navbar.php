@@ -1,17 +1,27 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand"
-            href="index.php"><span class="glyphicon glyphicon-cog"></span> Administrator's Panel</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#admin_navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-cog"></span><strong> Admin Panel</strong></a>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="../accounts/logout.php">Live site</a>
-          </ul>
-          <ul class="nav navbar-nav" style="float: right">
-            <li><a href="../accounts/logout.php" class="navbar-nav pull-right" style="color: red;"><i class="glyphicon glyphicon-off"></i> Log out</a></li>
-          </ul>
+
+
+        <div id="admin_navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="../accounts/logout.php"><i class="glyphicon glyphicon-home"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../accounts/logout.php">Log Out</a></li>
+            </ul>
         </div>
+
+
+
       </div>
     </div>
 

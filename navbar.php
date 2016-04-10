@@ -24,7 +24,8 @@
 
                   echo '  
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a id="sign_in_affix" href="javascript:;">Sign in</a></li>
+                        <li><a href="registration.php">Sign up</a></li>
+                        <li><a id="sign_in_affix" href="javascript:;">Log in</a></li>
                     </ul>
                   ';
                 include ("login_affix.php");

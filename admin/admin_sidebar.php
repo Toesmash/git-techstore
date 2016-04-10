@@ -13,5 +13,4 @@
 		    <li><a href="modify.php?action=changecategory"><div class="col-sm-1"></div><span class="glyphicon glyphicon-plus"></span> Modify Category</a></li>
 		    <li><a href="modify.php?action=changebrand"><div class="col-sm-1"></div><span class="glyphicon glyphicon-plus"></span> Modify Brand</a></li>
 		</ul>
-	<li><a href="#"><span class="glyphicon glyphicon-usd"></span> Price List</a></li>
 </ul>

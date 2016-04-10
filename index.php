@@ -48,30 +48,9 @@
     }
   ?>
   <div class="container-fluid">
-
-
-    <!-- HEADER  -->
-    <div class="row" id="header">
-      <div class="col-md-2">
-        <span class="glyphicon glyphicon-shopping-cart"></span>
-      </div>
-      <div class="col-md-4">
-          <img src="img/logo-primary2.svg" class="img-header">
-      </div>
-      <div class="col-md-6 ">
-        <form  action="products.php" method="get" enctype="multipart/form-data">
-          <div class="input-group">
-            <input type="text" class="form-control" name="key" placeholder="Vyhladaj produkt">
-            <span class="input-group-btn">
-              <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </span>
-          </div>
-        </form>
-      </div>    
-    </div>
-
+  <?php include ("header.php") ?>
     <!-- CAROUSEL -->
-    <div class="row">
+    <div class="row carousel-wrapper">
       <div  class="col-md-12 ">
         <div class="carousel slide" id="my-carousel">
 
@@ -129,6 +108,7 @@
         </div>   
       </div>
     </div>
+
     <!-- INFO -->
     <div class="row">
       <div class="col-md-12">

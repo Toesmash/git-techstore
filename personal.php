@@ -29,12 +29,13 @@
 <body>
   <?php include ("navbar.php"); ?>
   <div class="container-fluid">
-    
     <!-- HEADER  -->
     <div class="row" id="header">
         <img src="img/icons/edit.svg" alt="edit" class="img-icons">
         <h2>Edit your personal information.</h2>
     </div>
+
+
     <?php  
       editPersonal($acc_id);
 

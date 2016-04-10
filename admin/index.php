@@ -145,7 +145,7 @@
                                 	<i class="glyphicon glyphicon-piggy-bank dashboard"></i>
                                 </div>
                                 <div class="col-xs-12 text-center">
-                                    <div class="plussize">
+                                    <div class="moneysize">
                                         <?php getStats("SUM(order_totalprice)", "orders"); ?>
                                     </div>
                                     <p>Income</p>

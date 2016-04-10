@@ -25,9 +25,9 @@
 <body>
   <?php include ("navbar.php"); ?>
   <div class="container-fluid">
-    <div class="row checkout">
+    <div class="checkout">
 
-      <div class="col-md-4 checkout_first">
+      <div class="checkout_first">
         <h3 class="text-center text-warning">Order detials</h3>
         <?php  
           getOrdersCheckout($_GET['acc_id'], $_GET['order_id']);
@@ -35,7 +35,7 @@
       </div>
 
 
-      <div class="col-md-4 checkout_second">
+      <div class="checkout_second">
       <?php $info = getPersonalInfo($_GET['acc_id']) ?>
 
         <h3 class="text-center text-primary">Personal detials</h3>
@@ -68,28 +68,29 @@
         
       </div>
 
-      <div class="col-md-4 checkout_third">
+      <div class="checkout_third">
         <h3 class="text-center text-success">Complete and disburse order</h3>
         <p>Make sure your contact details are correct!</p>
         <img src="img/green_tick.png" alt="green tick" class="img-checkout img-responsive">
       </div>
 
     </div>
-    <div class="row" style="padding-top: 20px;">
-      <div class="col-md-4">
+    
+   </div> <!--Container -->
+   <div class="row checkout-buttons">
+      <div class="col-sm-4">
         <a href="orders.php" class="btn btn-warning btn-block btn-top-mar">Modify</a>
 
       </div>
-      <div class="col-md-4">
+      <div class="col-sm-4">
         <a href="personal.php?acc_id=<?php echo $acc_id; ?>&order_id=<?php echo $order_id; ?>" class="btn btn-primary btn-block btn-top-mar">Edit</a>
 
       </div>
-      <div class="col-md-4">
+      <div class="col-sm-4">
         <a href="index.php?disburse=true&acc_id=<?php echo $acc_id; ?>&order_id=<?php echo $order_id; ?>" class="btn btn-success btn-block btn-top-mar">Disburse</a>
 
       </div>
     </div>
-   </div> <!--Container -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

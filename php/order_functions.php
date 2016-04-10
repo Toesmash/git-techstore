@@ -109,19 +109,7 @@ function historyFetch($acc_id){
 			    </tbody>
 			  </table>
 		';
-
-
-	} 
-
-	// else {
-	// 	echo '
-
-			      
-	// 		<h4>Number of orders: '.$rowcount.'</h4>
-	// 	';
-	// }
-
-
+	}
 }
 
 
@@ -146,17 +134,18 @@ function fetchOrderProducts($acc_id){
 		';
 		// Horna cast table elementu
 		echo '
-			<table class="table table-responsive">
-                <thead>
-                    <tr>
-                        <th style="width: 50%;">Product</th>
-                        <th style="width: 10%;">Quantity</th>
-                        <th class="text-center" style="width: 10%;">Item price</th>
-                        <th class="text-center" style="width: 10%;">Total</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
+			<div class="table-responsive order-table">
+				<table class="table">
+	                <thead>
+	                    <tr>
+	                        <th style="width: 50%;">Product</th>
+	                        <th style="width: 10%;">Quantity</th>
+	                        <th class="text-center" style="width: 10%;">Item price</th>
+	                        <th class="text-center" style="width: 10%;">Total</th>
+	                        <th></th>
+	                    </tr>
+	                </thead>
+	                <tbody>
 		';
 
 		// Sekcia kde je loop ktory zobrazi vsetky produkty objednavky ako TABLE ROW <tr>
@@ -216,26 +205,27 @@ function fetchOrderProducts($acc_id){
 		// Dolna cast table elementu
 		$totalprice = calculateTotalePrice($order_id, $acc_id);
 		echo '
-					<tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>'.$totalprice.' €</strong></h3></td>
-                    </tr>
-                    <tr>
-                        <td> 
-                          <a class="btn btn-warning" href="products.php?all">Continue Shopping</a>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                        <a class="btn btn-success btn-block" href="checkout.php?acc_id='.$acc_id.'&order_id='.$order_id.'">Checkout</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+						<tr>
+	                        <td>   </td>
+	                        <td>   </td>
+	                        <td>   </td>
+	                        <td><h3>Total</h3></td>
+	                        <td class="text-right"><h3><strong>'.$totalprice.' €</strong></h3></td>
+	                    </tr>
+	                    <tr>
+	                        <td> 
+	                          <a class="btn btn-warning" href="products.php?all">Continue Shopping</a>
+	                        </td>
+	                        <td></td>
+	                        <td></td>
+	                        <td></td>
+	                        <td>
+	                        <a class="btn btn-success btn-block" href="checkout.php?acc_id='.$acc_id.'&order_id='.$order_id.'">Checkout</a>
+	                        </td>
+	                    </tr>
+	                </tbody>
+	            </table>
+            </div>
 		';
 
 	}

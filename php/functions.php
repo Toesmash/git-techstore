@@ -596,11 +596,11 @@ function getProducts($query){
 
 
 			echo '
-				<div class="col-md-4 single_product" >
+				<div class="col-sm-4 single_product" >
 					<div class="product_title">
 					<p>'.$product_name.'</p>
 					</div>
-					<div class="product_image"  data-toggle="modal" data-target="#modalnr_'.$x.'">
+					<div class="product_image floar-middle"  data-toggle="modal" data-target="#modalnr_'.$x.'">
 					<img src="admin/product_images/'.$product_image.'"/>
 					</div>
 					<div class="product_price">

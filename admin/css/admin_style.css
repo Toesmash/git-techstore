@@ -5,7 +5,7 @@
 
 body{
 /*background-color: lightgrey;*/
-font-family: 'Open Sans', sans-serif;
+/*font-family: 'Open Sans', sans-serif;*/
 padding-top: 52px;
 }
 
@@ -76,6 +76,10 @@ table {
     font-size: 40px;
 }
 
+.moneysize {
+    font-size: 35px;
+}
+
 .panel-green {
     border-color: #5cb85c;
 }
@@ -130,7 +134,45 @@ table {
     color: #df8a13;
 }
 
+/*--------------------------------------------MEDIA-QUERIES-------------------------------*/
+/*--------------------------------------------TABLETS UP TO SMALLLER LAPTOPS*/
+@media only screen and (min-width:421px) and (max-width : 992px) {
+    #header{
+        padding-bottom: 20px;
+    }
 
+    .img-header{
+        max-height: 100px !important;
+    }
+
+    .input-group {
+        margin-top: 10px;
+    }
+
+    .checkout_third {
+        display: none;
+    }
+
+    .checkout_second {
+        border-right: none;
+        padding: 0;
+    }
+
+    .checkout_first, .checkout_second {
+        width: 50%;
+    }
+
+
+}
+
+/*--------------------------------------------MOBILE PHONES UP TO iPHONE6S*/
+@media only screen and (max-width : 420px) {
+    .trelloFrame {
+        display: none;
+    }
+
+
+}
 
 /*.col-sm-2, .col-sm-3, .col-sm-4, .col-sm-1,.product_price, .product_image, .product_title,.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,  .col-md-7,  
 .col-md-8,  .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-sm-4{
