@@ -61,6 +61,7 @@
 
 	    <link href="../css/bootstrap.min.css" rel="stylesheet">
 	  	<link rel="stylesheet" href="css/admin_style.css">
+    	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 	</head>
 <body>
 

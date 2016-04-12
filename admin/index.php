@@ -48,11 +48,12 @@
 	<head>
 	  	<meta charset='utf-8'>
 	  	<title>Admin Panel</title>
-	  	<meta name="description" content="TECHstore">
+	  	<meta name="description" content="TechPoint">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	    <link href="../css/bootstrap.min.css" rel="stylesheet">
 	  	<link rel="stylesheet" href="css/admin_style.css">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	</head>
 <body>

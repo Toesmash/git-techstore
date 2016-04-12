@@ -13,7 +13,7 @@
 
         <div id="admin_navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="../accounts/logout.php"><i class="glyphicon glyphicon-home"></i></a></li>
+                <li><a href="../index.php">Live site</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="../accounts/logout.php">Log Out</a></li>

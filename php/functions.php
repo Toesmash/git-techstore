@@ -489,7 +489,6 @@ function listData($database, $name, $id){
 // VRATI VSETKY KATEGORIE PRE DB + VSETKY PODKATEGORIE
 function getCategory($n_rows){
 	global $con;
-	// echo'<p>POCET ROWS'.$n_rows.'</p>';
 	$sql = "SELECT * FROM category";
 	$run_cat = mysqli_query($con, $sql);
 
@@ -526,8 +525,6 @@ function getCategory($n_rows){
 function getSubCategory($collapse_number, $product_category){
 	global $con;
 	$sql = "SELECT * FROM category";
-
-	// echo'<p>POCET BRANDS'.$collapse_number.'</p>';
 
 	$unique_brands = getRows('DISTINCT pro_brand', 'products WHERE pro_category="'.$product_category.'"');
 

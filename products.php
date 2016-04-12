@@ -12,13 +12,14 @@
 <html>
 <head>
   	<meta charset='utf-8'>
-  	<title>TECHstore</title>
-  	<meta name="description" content="TECHstore">
+  	<title>TechPoint</title>
+  	<meta name="description" content="TechPoint">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
   	<link rel="stylesheet" href="css/internal/style.css">
   	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
@@ -40,9 +41,24 @@
 <div class="container-fluid">
     
 	<header>
-		<div class="jumbotron">
-	        <h1>Bootstrap Affix</h1>
-	        <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought.</p>
+	    <div class="row text-center icon-row">
+	    	<a href="products.php?category=2"><img src="img/icons/mobile4.svg" alt="mobile phone" class="product_icons"></a>
+	    	<a href="products.php?category=5"><img src="img/icons/tablet3.svg" alt="mobile phone" class="product_icons"></a>
+	    	<a href="products.php?category=1"><img src="img/icons/laptop7.svg" alt="mobile phone" class="product_icons"></a>
+	    	<a href="products.php?category=3"><img src="img/icons/headphones4.svg" alt="mobile phone" class="product_icons"></a>
+	    	<a href="products.php?category=6"><img src="img/icons/smartwatch3.svg" alt="mobile phone" class="product_icons"></a>
+	    	<a href="products.php?category=4"><img src="img/icons/floppy.svg" alt="mobile phone" class="product_icons"></a>
+	    </div>
+		<div class="row text-center products-banner">
+	        <h1>Every product you have ever wished for.</h1>
+	       	<form  action="products.php" method="get" enctype="multipart/form-data">
+		      	<div class="input-group text-center products-search">
+		        	<input type="text" class="form-control" name="key" placeholder="Enter product, brand or keyboard for search">
+		        	<i class="input-group-btn">
+		          		<button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+		       		</i>
+		      	</div>
+		   	</form>
 	    </div>
     </header>
 
@@ -55,12 +71,11 @@
 		<div id="affix_sidebar">
 		 	<div class="list-group panel" id="sidebar">
 		  		<div class="list-group-item">
-			      	<h4 class="list-group-item-heading">Categories</h4>
+			      	<h4 class="list-group-item-heading text-center">Categories</h4>
 			    </div>
 			    <?php 
 					$rows = getRows('*', 'category');
 					getCategory($rows);
-
  				?>
 		    	
 		  	</div>
